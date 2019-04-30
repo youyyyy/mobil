@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">设置</string>
+    <string name="menu_home">主页</string>
+    <string name="input_pwd_hint">请输入密码</string>
+    <string name="password_err_hint">密码长度为4到12个字符</string>
+    <string name="input_phone_hint">请输入电话号码</string>
+</resources>
