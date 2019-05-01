@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">登陆</string>
     <string name="action_settings">设置</string>
     <string name="menu_home">主页</string>
     <string name="input_pwd_hint">请输入密码</string>
     <string name="password_err_hint">密码长度为4到12个字符</string>
     <string name="input_phone_hint">请输入电话号码</string>
+    <string name="app_regisi">请注册</string>
+    <string name="reenterpassword">再次输入密码</string>
+    <string name="signupCsignature">写个签名也不错</string>
+    <string name="signupEmail">邮箱</string>
+    <string name="signupPassword">密码</string>
+    <string name="signupPhoneNum">电话号码</string>
+    <string name="signupType">标签</string>
+    <string name="signupUsername">昵称</string>
 </resources>

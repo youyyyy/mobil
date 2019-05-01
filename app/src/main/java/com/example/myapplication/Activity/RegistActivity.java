@@ -1,98 +1,94 @@
 package com.example.myapplication.Activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Application.MyApplication;
-import com.example.myapplication.Bean.User;
-import com.example.myapplication.Bean.normalReturnBean;
 import com.example.myapplication.R;
-import com.example.myapplication.Util.GsonUtil;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
-/*
-用户登录
- */
-public class LoginActivity extends AppCompatActivity {
+public class RegistActivity extends AppCompatActivity {
 
-    @BindView(R.id.input_phonenum)
-    EditText phoneNumdText;
+    private boolean manSelected = false;
+    private boolean womanSelected = false;
+
+    @BindView(R.id.btn_signup)
+    Button signupButton;
+    @BindView(R.id.signupinfo)
+    TextView signupInfo;
+    @BindView(R.id.input_name)
+    EditText nameText;
     @BindView(R.id.input_password)
-    EditText passWordText;
-    @BindView(R.id.btn_login)
-    Button loginButton;
-    @BindView(R.id.logininfo)
-    TextView loginInfo;
-    @BindView(R.id.btn_regist)
-    Button registButton;
-    @BindView(R.id.registinfo)
-    TextView registInfo;
+    EditText passwordText;
+    @BindView(R.id.input_reEnterPassword)
+    EditText reEnterPasswordText;
+    @BindView(R.id.input_phonenum)
+    EditText phoneNumText;
+    @BindView(R.id.input_email)
+    EditText emailText;
+    @BindView(R.id.input_type)
+    EditText typeText;
+    @BindView(R.id.input_csignature)
+    EditText csignatureText;
+
+    @BindView(R.id.icon_man)
+    ImageView _iconMan;
+    @BindView(R.id.icon_woman)
+    ImageView _iconWoman;
 
     private OkHttpClient client = new OkHttpClient();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_regist);
         ButterKnife.bind(this);
         new Thread(connect).start();
 
-        loginButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                login();
-            }
-        });
-
-        registButton.setOnClickListener(new View.OnClickListener() {
+        signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegistActivity.class));
-
+                signup();
             }
         });
     }
 
 
+
     Runnable connect = new Runnable() {
         @Override
         public void run() {
-           //todo
+            //todo
         }
     };
 
-    public void login() {
+    public void signup() {
         if (!validate()) {
             return;
         }
-
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+        final ProgressDialog progressDialog = new ProgressDialog(RegistActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
+        progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
         new Thread(new Runnable() {
@@ -139,31 +135,15 @@ public class LoginActivity extends AppCompatActivity {
                 })
                 .build();
 
-        String username = phoneNumdText.getText().toString();
-        String password = passWordText.getText().toString();
+        String name=nameText.getText().toString();
+        String password=passwordText.getText().toString();
+        String reEnterPassword=reEnterPasswordText.getText().toString();
+        String phoneNum=phoneNumText.getText().toString();
+        String email=emailText.getText().toString();
+        String type=typeText.getText().toString();
+        String csignature=csignatureText.getText().toString();
 
-        Request request = new Request.Builder()
-                .url(MyApplication.getURL() + "user/login?phonenum=" + username + "&password=" + password)
-                .build();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d("myapplog", e.toString());
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String body = response.body().string();
-                Log.d("myapplog", "hahah:" + body);
-
-                normalReturnBean temp = GsonUtil.GsonToBean(body, normalReturnBean.class);
-                User user = GsonUtil.GsonToBean(temp.getData().toString(), User.class);
-                Log.d("myapplog", user.getPhonenum());
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
-            }
-        });
     }
 
     public void saveCookie(String id, Long expiresTime){
@@ -174,29 +154,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public boolean validate() {
-        boolean valid = true;
 
-        String phonenum = phoneNumdText.getText().toString();
-        String password = passWordText.getText().toString();
-
-        if (phonenum.isEmpty() || phonenum.contains(" ")) {
-            phoneNumdText.setError("Plz check your username!");
-            valid = false;
-        } else {
-            phoneNumdText.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            //_passwordText.setError("between 4 and 10 alphanumeric characters");
-            passWordText.setError(getString(R.string.password_err_hint));
-            valid = false;
-        } else {
-            passWordText.setError(null);
-        }
-
-        return valid;
-    }
-
+    
 
 }
