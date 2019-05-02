@@ -2,34 +2,24 @@ package com.example.myapplication.Bean;
 
 public class User {
     private int id;
-
     //用户昵称
     private String username;
-
     //密码
     private String password;
-
     //用户性别
     private int gender;
-
     //用户电话
     private String phonenum;
-
     //用户级别
     private String levels;
-
     //用户邮箱
     private String email;
-
     //时间
     // private Date regtime;
-
     //兴趣类别
     private String type;
-
     //个性签名
     private String csignature;
-
 
     public User(){}
 

@@ -4,7 +4,7 @@
     <string name="action_settings">设置</string>
     <string name="menu_home">主页</string>
     <string name="input_pwd_hint">请输入密码</string>
-    <string name="password_err_hint">密码长度为4到12个字符</string>
+    <string name="password_err_hint">密码长度为6到12个字符</string>
     <string name="input_phone_hint">请输入电话号码</string>
     <string name="app_regisi">请注册</string>
     <string name="reenterpassword">再次输入密码</string>
@@ -12,6 +12,10 @@
     <string name="signupEmail">邮箱</string>
     <string name="signupPassword">密码</string>
     <string name="signupPhoneNum">电话号码</string>
-    <string name="signupType">标签</string>
+    <string name="signupType">请填入自己最喜欢的动漫类型</string>
     <string name="signupUsername">昵称</string>
+    <string name="nameLength">名字需要再长一些哟~</string>
+    <string name="passwordLength">密码长度为6到12个字符</string>
+    <string name="passwordMtch">两次密码需要一样哟~</string>
+    <string name="createaccount">注册</string>
 </resources>

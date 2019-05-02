@@ -24,9 +24,15 @@
     <string name="signupUsername">Name</string>
     <string name="signupPassword">Password</string>
     <string name="reenterpassword">Re-enter Password</string>
-    <string name="signupPhoneNum">Phone Number</string>
     <string name="signupEmail">Email</string>
     <string name="signupPhoneNum">Phone Number</string>
     <string name="signupType">Type</string>
     <string name="signupCsignature">Csignature</string>
+    <string name="nameLength">at least 3 characters and can not have any space!</string>
+    <string name="passwordLength">between 6 and 12 alphanumeric characters!</string>
+    <string name="passwordMtch">Password Do not match!</string>
+    <string name="createaccount">regist</string>
+
+    <string name="signup_success">"Sign Up Successed. You can login now."</string>
+
 </resources>

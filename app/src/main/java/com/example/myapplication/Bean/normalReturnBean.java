@@ -17,7 +17,7 @@ public class normalReturnBean implements Serializable {
         return code;
     }
     public void setCode(int code){
-        this.code=code;
+        this.code = code;
     }
 
     public String getMessage(){
