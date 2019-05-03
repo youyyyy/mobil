@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+
     }
 
     @Override
@@ -82,16 +85,22 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_message) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_Monday) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_Tuesday) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_Wednesday) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_Thursday) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
+        }else if (id == R.id.nav_Friday) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
+        }else if (id == R.id.nav_Saturday) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
+        }else if (id == R.id.nav_Sunday) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

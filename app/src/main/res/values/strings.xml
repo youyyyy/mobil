@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="app_regist">please regist</string>
+    <string name="app_name">C.C.</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="login">login</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_home">Self</string>
+    <string name="menu_dicuss">My Discuss</string>
+    <!--<string name="menu_slideshow">Slideshow</string>-->
+    <!--<string name="menu_tools">Tools</string>-->
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
@@ -26,13 +26,32 @@
     <string name="reenterpassword">Re-enter Password</string>
     <string name="signupEmail">Email</string>
     <string name="signupPhoneNum">Phone Number</string>
-    <string name="signupType">Type</string>
+    <string name="signupType">Type And Gender</string>
     <string name="signupCsignature">Csignature</string>
     <string name="nameLength">at least 3 characters and can not have any space!</string>
     <string name="passwordLength">between 6 and 12 alphanumeric characters!</string>
     <string name="passwordMtch">Password Do not match!</string>
     <string name="createaccount">regist</string>
-
     <string name="signup_success">"Sign Up Successed. You can login now."</string>
+    <string name="gender">please choose your gender</string>
+    <string name="app_regist">please regist</string>
+    <string name="phoneNum">please filling-in your phone number</string>
+    <string name="email">please filling-in your email</string>
+
+    <!-- nav_header_main -->
+    <string name="welcome">welcome to C.C. word</string>
+    <string name="C.C.">C.C.word</string>
+
+    <!-- object -->
+    <string name="anime">Anime Schedule</string>
+    <string name="Monday">Monday</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Friday">Friday</string>
+    <string name="Saturday">Saturday</string>
+    <string name="Sunday">Sunday</string>
+    <string name="Developing">Developing...</string>
+
 
 </resources>

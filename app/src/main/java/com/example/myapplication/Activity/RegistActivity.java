@@ -42,6 +42,11 @@ public class RegistActivity extends AppCompatActivity {
     private  LayoutInflater mInflater;
     private String[] labels;
 
+
+//    @BindView(R.id.genderview)
+//    TextView genderView;
+    @BindView(R.id.textview)
+    TextView textView;
     @BindView(R.id.btn_signup)
     androidx.appcompat.widget.AppCompatButton signupButton;
     @BindView(R.id.signupinfo)
@@ -56,8 +61,8 @@ public class RegistActivity extends AppCompatActivity {
     EditText phoneNumText;
     @BindView(R.id.input_email)
     EditText emailText;
-    @BindView(R.id.input_type)
-    EditText typeText;
+//    @BindView(R.id.input_type)
+//    EditText typeText;
     @BindView(R.id.input_csignature)
     EditText csignatureText;
 
@@ -111,7 +116,7 @@ public class RegistActivity extends AppCompatActivity {
 
     private String[] initLabel () {
         String[] mVals = new String[]
-                {"大屌", "才徐坤", "皮皮", "哈哈", "吴亦凡", "局座"};
+                {"搞笑", "科幻", "动作", "热血", "青春", "恐怖","恋爱","乙女","励志","冒险","奇幻","轻小说","励志","科幻","泡面番"};
         flowLayout.setMaxSelectCount(3);
         flowLayout.setAdapter(new TagAdapter<String>(mVals)
         {
@@ -274,6 +279,8 @@ public class RegistActivity extends AppCompatActivity {
         String name = nameText.getText().toString();
         String password = passwordText.getText().toString();
         String reEnterPassword = reEnterPasswordText.getText().toString();
+        String phoneNum=phoneNumText.getText().toString();
+        String email=emailText.getText().toString();
 
         if (name.isEmpty() || name.length() < 3 || name.contains(" ")) {
             nameText.setError(getString(R.string.nameLength));
@@ -294,6 +301,20 @@ public class RegistActivity extends AppCompatActivity {
             valid = false;
         } else {
             reEnterPasswordText.setError(null);
+        }
+
+        if (phoneNum.isEmpty()) {
+            phoneNumText.setError(getString(R.string.phoneNum));
+            valid = false;
+        }else {
+            phoneNumText.setError(null);
+        }
+
+        if (phoneNum.isEmpty()) {
+            emailText.setError(getString(R.string.email));
+            valid = false;
+        }else {
+            emailText.setError(null);
         }
 
         return valid;

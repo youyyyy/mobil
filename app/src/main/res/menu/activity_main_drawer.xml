@@ -9,29 +9,49 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_message"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:title="@string/menu_dicuss" />
+        <!--<item-->
+            <!--android:id="@+id/nav_slideshow"-->
+            <!--android:icon="@drawable/ic_menu_slideshow"-->
+            <!--android:title="@string/menu_slideshow" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_tools"-->
+            <!--android:icon="@drawable/ic_menu_manage"-->
+            <!--android:title="@string/menu_tools" />-->
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/anime">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_Monday"
                 android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:title="@string/Monday" />
+            <item
+                android:id="@+id/nav_Tuesday"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Tuesday" />
+            <item
+                android:id="@+id/nav_Wednesday"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Wednesday" />
+            <item
+                android:id="@+id/nav_Thursday"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Thursday" />
+            <item
+                android:id="@+id/nav_Friday"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Friday" />
+            <item
+                android:id="@+id/nav_Saturday"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Saturday" />
+            <item
+                android:id="@+id/nav_Sunday"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Sunday" />
         </menu>
     </item>
 
