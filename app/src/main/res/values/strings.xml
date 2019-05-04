@@ -53,5 +53,9 @@
     <string name="Sunday">Sunday</string>
     <string name="Developing">Developing...</string>
 
+    <!-- user -->
+    <string name="ID">ID:</string>
+
+
 
 </resources>

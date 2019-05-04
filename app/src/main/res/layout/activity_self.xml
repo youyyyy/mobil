@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"   >
+
+        <ImageView
+            android:id="@+id/head_sculpture"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_test"
+            android:layout_gravity="center_horizontal"/>
+        
+        <TextView
+            android:id="@+id/user_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="@string/ID"
+            android:layout_gravity="center"
+            android:textIsSelectable="true"
+            android:textSize="15dp"
+            android:layout_marginTop="15dp"
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>
