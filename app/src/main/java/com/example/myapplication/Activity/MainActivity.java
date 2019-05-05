@@ -1,6 +1,7 @@
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -28,11 +29,14 @@ import com.example.myapplication.Util.GsonUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -49,9 +53,13 @@ public class MainActivity extends AppCompatActivity
     private OkHttpClient client = new OkHttpClient();
 
     private String dateForFJ = "4";
+//    final Calendar c = Calendar.getInstance();
+//    c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+//    dateForFJ = c.get(Calendar.DAY_OF_WEEK);
     private List<FJList> fjLists = new ArrayList<>();
     private List<FJList> tempfjLists = new ArrayList<>();
     private ObjectAdapter objectAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +95,49 @@ public class MainActivity extends AppCompatActivity
         objectAdapter = new ObjectAdapter(fjLists);
         recyclerView.setAdapter(objectAdapter);
 
-
-        View headerView = navigationView.getHeaderView(0);
-
-    }
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (!MyApplication.getHaveRun()) {
+//                    //TODO
+//
+//                    //判断网络连接是否正常。同步
+//                    //1.
+//                    if (false) {
+//                        //获取当前日期
+//                        dateForFJ = getDateForFJ();
+//
+//                        //请求数据，更新list
+//                        updateData();
+//                    } else {
+//                        //2.
+//                        //读取已经保存的list
+//                        String peopleListJson =getSharedPreferences("spNewList",MODE_PRIVATE).getString("KEY_getNewList","");  //取出key为"KEY_PEOPLE_DATA"的值，如果值为空，则将第二个参数作为默认值赋值
+//                        if(peopleListJson!="")  //防空判断
+//                        {
+//                            //Gson gson = new Gson();
+//                            //fjLists = gson.fromJson(peopleListJson, new TypeToken<List<FJList>>() {}.getType()); //将json字符串转换成List集合
+//                            List<FJList> temp = GsonUtil.GsonToList(peopleListJson, FJList.class);
+//                            //显示
+//                            fjLists.clear();
+//                            fjLists.addAll(temp);
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    objectAdapter.notifyDataSetChanged();
+//                                }
+//                            });
+//                        }
+//
+//                    }
+//                    MyApplication.setHaveRun(true);
+//                }
+//            }
+//        }).start();
+//
+//        View headerView = navigationView.getHeaderView(0);
+//
+  }
 
     @Override
     public void onBackPressed() {
@@ -124,6 +171,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    //控件
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -138,7 +186,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_Monday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "2";
-           updateData();
+            updateData();
 
         } else if (id == R.id.nav_Tuesday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
@@ -158,6 +206,7 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.nav_Friday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "6";
+            updateData();
 
         }else if (id == R.id.nav_Saturday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
@@ -173,6 +222,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    private String getDateForFJ() {
+        final Calendar c = Calendar.getInstance();
+        c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+        return String.valueOf(c.get(Calendar.DAY_OF_WEEK));
     }
 
     private List<FJList> getNewList() {
@@ -215,6 +271,12 @@ public class MainActivity extends AppCompatActivity
 
                 //TODO
                 //保存这个list到本地
+               // SharedPreferences sp = mBaseActivity.getSharedPreferences("getNewList", MODE_PRIVATE);//创建sp对象
+                Gson gson = new Gson();
+                String jsonStr=gson.toJson(fjLists); //将List转换成Json
+                SharedPreferences.Editor editor =  getSharedPreferences("spNewList",MODE_PRIVATE).edit();
+                editor.putString("KEY_getNewList", jsonStr) ; //存入json串
+                editor.commit() ;  //提交
 
                 runOnUiThread(new Runnable() {
                     @Override

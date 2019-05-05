@@ -310,7 +310,7 @@ public class RegistActivity extends AppCompatActivity {
             phoneNumText.setError(null);
         }
 
-        if (phoneNum.isEmpty()) {
+        if (email.isEmpty()) {
             emailText.setError(getString(R.string.email));
             valid = false;
         }else {

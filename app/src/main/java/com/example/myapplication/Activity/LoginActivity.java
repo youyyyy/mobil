@@ -9,11 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Application.MyApplication;
+import com.example.myapplication.Bean.User;
+import com.example.myapplication.Bean.normalReturnBean;
 import com.example.myapplication.R;
+import com.example.myapplication.Util.GsonUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -153,12 +157,24 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 String body = response.body().string();
                 Log.d("myapplog", "hahah:" + body);
-/*
+
                 normalReturnBean temp = GsonUtil.GsonToBean(body, normalReturnBean.class);
                 User user = GsonUtil.GsonToBean(temp.getData().toString(), User.class);
-                Log.d("myapplog", user.getPhonenum());*/
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+               // Log.d("myapplog", user.getPhonenum());
+                if(temp.getCode()==404){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.cancel();
+                            Toast.makeText(LoginActivity.this, R.string.loginError, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    //Toast.makeText(LoginActivity.this, R.string.loginError, Toast.LENGTH_SHORT).show();
+
+                }else {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                }
 
             }
         });

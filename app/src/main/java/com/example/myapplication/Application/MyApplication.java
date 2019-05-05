@@ -7,6 +7,7 @@ public class MyApplication extends Application {
 
     private static Context mContext;
     private static  String URL;
+    private static Boolean haveRun = false;
 
     @Override
     public void onCreate() {
@@ -21,5 +22,13 @@ public class MyApplication extends Application {
 
     public static String getURL() {
         return URL;
+    }
+
+    public static Boolean getHaveRun() {
+        return haveRun;
+    }
+
+    public static void setHaveRun(Boolean haveRun) {
+        MyApplication.haveRun = haveRun;
     }
 }
