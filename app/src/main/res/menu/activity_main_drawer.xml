@@ -12,6 +12,10 @@
             android:id="@+id/nav_message"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_dicuss" />
+        <item
+            android:id="@+id/nav_recommend"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/menu_recommend" />
         <!--<item-->
             <!--android:id="@+id/nav_slideshow"-->
             <!--android:icon="@drawable/ic_menu_slideshow"-->
