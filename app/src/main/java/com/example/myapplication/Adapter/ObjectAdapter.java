@@ -1,6 +1,7 @@
 package com.example.myapplication.Adapter;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.myapplication.Activity.DetailsActivity;
 import com.example.myapplication.Bean.FJList;
 import com.example.myapplication.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder>{
@@ -51,8 +53,21 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
-               // Object object = mObjectList.get(position);
-                view.getContext().startActivity(new Intent(view.getContext(), DetailsActivity.class));
+                FJList object = mObjectList.get(position);
+                int id = (object.getId());
+                Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+                intent.putExtra("id", id);
+
+                Bitmap bitmap = object.getImage();
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                byte[] bitMapByte = byteArrayOutputStream.toByteArray();
+                intent.putExtra("bitmap", bitMapByte);
+
+                String name=object.getName();
+                intent.putExtra("fjname",name);
+
+                view.getContext().startActivity(intent);
             }
         });
         return holder;

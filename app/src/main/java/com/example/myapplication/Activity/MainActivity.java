@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
 
     private OkHttpClient client = new OkHttpClient();
 
-    private String dateForFJ = "4";
+    private String dateForFJ = "";
 //    final Calendar c = Calendar.getInstance();
 //    c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 //    dateForFJ = c.get(Calendar.DAY_OF_WEEK);
@@ -179,7 +179,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-                startActivity(new Intent(MainActivity.this, SelfActivity.class));
+            Intent tempIntent = new Intent(MainActivity.this, SelfActivity.class);
+            tempIntent.putExtra("hhh", "hhh from a");
+                startActivity(tempIntent);
             // Handle the camera action
         } else if (id == R.id.nav_message) {
 
@@ -271,6 +273,7 @@ public class MainActivity extends AppCompatActivity
                 fjLists.clear();
                 fjLists.addAll(getNewList());
 
+
                 //TODO
                 //保存这个list到本地
                // SharedPreferences sp = mBaseActivity.getSharedPreferences("getNewList", MODE_PRIVATE);//创建sp对象
@@ -306,6 +309,7 @@ public class MainActivity extends AppCompatActivity
             Bitmap tempPic = BitmapFactory.decodeStream(inputStream);
             temp.setImage(tempPic);
             temp.setName(fobject.getTitle());
+            temp.setId(fobject.getId());
             //tempfjLists.add(temp);
 
         } catch (IOException e) {
