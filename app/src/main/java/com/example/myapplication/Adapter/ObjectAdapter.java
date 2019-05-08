@@ -46,6 +46,21 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
+                FJList object = mObjectList.get(position);
+                int id = (object.getId());
+                Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+                intent.putExtra("id", id);
+
+                Bitmap bitmap = object.getImage();
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                byte[] bitMapByte = byteArrayOutputStream.toByteArray();
+                intent.putExtra("bitmap", bitMapByte);
+
+                String name=object.getName();
+                intent.putExtra("fjname",name);
+
+                view.getContext().startActivity(intent);
                 //Object object = mObjectList.get(position);
             }
         });
