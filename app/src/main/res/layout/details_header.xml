@@ -4,13 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
+    <Button
+        android:id="@+id/discuss"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:text="发表评论"/>
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview1"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
@@ -19,7 +25,7 @@
         android:foreground="?android:attr/selectableItemBackground">
         <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:id="@+id/imageView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -32,7 +38,7 @@
         android:id="@+id/cardview2"
         android:layout_marginTop="12dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
@@ -47,82 +53,81 @@
         android:text="标题"/>
     </com.google.android.material.card.MaterialCardView>
 
-    <TextView
-        android:id="@+id/region"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cardview2"
-        android:layout_marginTop="20dp"
-        android:text="地区"/>
-
-    <TextView
-        android:id="@+id/company"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cardview2"
-        android:layout_toRightOf="@id/region"
-        android:layout_marginTop="20dp"
-        android:text="公司"
-        />
-
-    <TextView
-        android:id="@+id/type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/company"
-        android:layout_marginTop="8dp"
-        android:text="标签" />
-
-    <TextView
-        android:id="@+id/focus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/type"
-        android:layout_marginTop="8dp"
-        android:text="看点" />
-
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardview3"
-        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardview2"
         app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        android:layout_below="@+id/focus">
-    <TextView
-        android:id="@+id/fjabstract"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/focus"
-        android:text="简介" />
+        app:cardElevation="5dp"
+        android:layout_marginTop="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/region"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="地区"/>
+
+            <TextView
+                android:id="@+id/company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/region"
+                android:text="公司"
+                />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/company"
+                android:layout_marginTop="8dp"
+                android:text="标签" />
+
+            <TextView
+                android:id="@+id/focus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/type"
+                android:layout_marginTop="8dp"
+                android:text="看点" />
+
+            <TextView
+                android:id="@+id/fjabstract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/focus"
+                android:layout_marginTop="8dp"
+                android:text="简介" />
+
+            <TextView
+                android:id="@+id/actor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fjabstract"
+                android:layout_marginTop="8dp"
+                android:text="声优"
+                />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/actor"
+                android:layout_marginTop="8dp"
+                android:text="年代" />
+
+            <TextView
+                android:id="@+id/updatetime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/time"
+                android:layout_below="@id/actor"
+                android:layout_marginTop="8dp"
+                android:text="更新时间" />
+        </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/actor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cardview3"
-        android:layout_marginTop="8dp"
-        android:text="声优"
-        />
-
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/actor"
-        android:layout_marginTop="8dp"
-        android:text="年代" />
-
-    <TextView
-        android:id="@+id/updatetime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/time"
-        android:layout_below="@id/actor"
-        android:layout_marginTop="8dp"
-        android:text="更新时间" />
 
 
 

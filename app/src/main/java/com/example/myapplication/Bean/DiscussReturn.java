@@ -1,6 +1,8 @@
 package com.example.myapplication.Bean;
 
-public class Discuss {
+import java.util.Date;
+
+public class DiscussReturn {
     private int id;
 
     private String body;
@@ -9,17 +11,17 @@ public class Discuss {
 
     private int fobjectid;
 
+    private Date time=new Date();
+
     //private Date t=new Date();
 
     private int pid;
 
     private int puid;
 
-    private User user;
-
     private String username;
 
-    public Discuss(){}
+    private User user;
 
 
     public int getId(){
@@ -57,6 +59,12 @@ public class Discuss {
         this.pid=pid;
     }
 
+    public Date getTime(){
+        return time;
+    }
+    public void setTime(Date time){
+        this.time=time;
+    }
 
     public int getPuid(){
         return puid;
@@ -71,4 +79,5 @@ public class Discuss {
     public void setUsername(String username){
         this.username=username;
     }
+
 }

@@ -85,6 +85,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
+    /*
+    * 加特技
+    * */
     public void login() {
         if (!validate()) {
             return;
@@ -108,6 +111,9 @@ public class LoginActivity extends AppCompatActivity {
         }).start();
     }
 
+    /*
+    * 保存cookie
+    * */
     public void runHttp (ProgressDialog progressDialog) throws Exception{
 
         client = new OkHttpClient.Builder()
@@ -180,6 +186,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
+    /*
+    * 存cookie方法
+    * */
     public void saveCookie(String id, Long expiresTime){
         SharedPreferences.Editor editor = getSharedPreferences("cookies",MODE_PRIVATE).edit();
         editor.putString("id",id);
@@ -188,6 +198,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
+    /*
+    * 判断输入内容
+    * */
     public boolean validate() {
         boolean valid = true;
 

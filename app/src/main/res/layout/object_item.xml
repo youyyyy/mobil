@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <ImageView android:id="@+id/object_image"
+    <ImageView
+        android:id="@+id/object_image"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp" />

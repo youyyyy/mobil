@@ -13,11 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.SelfActivity"></activity>
-        <activity android:name=".Activity.DetailsActivity"></activity>
+        <activity android:name=".Activity.DiscussActivity"></activity>
+        <activity android:name=".Activity.SelfActivity" />
+        <activity android:name=".Activity.DetailsActivity" />
         <activity
             android:name=".Activity.RegistActivity"
-            android:theme="@style/AppTheme.Dark"></activity>
+            android:theme="@style/AppTheme.Dark" />
         <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

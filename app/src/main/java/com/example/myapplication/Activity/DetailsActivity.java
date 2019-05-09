@@ -1,7 +1,9 @@
 package com.example.myapplication.Activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Application.MyApplication;
+import com.example.myapplication.Bean.DiscussList;
+import com.example.myapplication.Bean.DiscussReturn;
 import com.example.myapplication.Bean.FjDetailBean;
 import com.example.myapplication.Bean.Fobject;
 import com.example.myapplication.R;
@@ -25,7 +30,9 @@ import com.example.myapplication.Util.GsonUtil;
 import com.poliveira.parallaxrecyclerview.ParallaxRecyclerAdapter;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.Call;
@@ -34,6 +41,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+
+/*
+* 主要实现番剧具体信息展示以及评论展示
+* */
 public class DetailsActivity extends Activity {
 
     private int fjId;
@@ -49,58 +60,109 @@ public class DetailsActivity extends Activity {
     private TextView typeText;
     private TextView timeText;
     private TextView updateTimeText;
+    private Button disButton;
 
+    private List<DiscussReturn> content = new ArrayList<>();
+    private RecyclerView myRecycler;
 
     private OkHttpClient client = new OkHttpClient();
 
+
+/*
+* 声明变量，初始化
+* */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         //ButterKnife.bind(this);
-        RecyclerView myRecycler = (RecyclerView) findViewById(R.id.myRecycler);
+        myRecycler = (RecyclerView) findViewById(R.id.myRecycler);
         LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setOrientation(RecyclerView.VERTICAL);
-        myRecycler.setLayoutManager(manager);
-        myRecycler.setHasFixedSize(true);
+        //manager.setOrientation(RecyclerView.VERTICAL);
+        //myRecycler.setLayoutManager(manager);
+        //myRecycler.setHasFixedSize(true);
+
 
         Intent intent = getIntent();
         fjId = intent.getIntExtra("id", 0);
         byte[] bitMapByte = intent.getByteArrayExtra("bitmap");
         bitmap = BitmapFactory.decodeByteArray(bitMapByte, 0, bitMapByte.length);
-        fjName=intent.getStringExtra("fjname");
-        Log.d("myapplog", "hahah:" + fjName);
+        fjName = intent.getStringExtra("fjname");
 
-        final List<String> content = new ArrayList<>();
-        for (int i = 0; i < 30; i++)
-            content.add(getListString(i));
-
-
-        ParallaxRecyclerAdapter<String> stringAdapter = new ParallaxRecyclerAdapter<String>(content) {
+        new Thread(new Runnable() {
             @Override
-            public void onBindViewHolderImpl(RecyclerView.ViewHolder viewHolder, ParallaxRecyclerAdapter<String> adapter, int i) {
-                // If you're using your custom handler (as you should of course)
-                // you need to cast viewHolder to it.
-                ((TextView) viewHolder.itemView).setText(content.get(i));
+            public void run() {
+                content.clear();
+                content.addAll(initList());
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        createAdapter(myRecycler, content);
+                        getData();
+                    }
+                });
+            }
+        }).start();
+    }
+
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                content.clear();
+//                content.addAll(initList());
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        createAdapter(myRecycler, content);
+//                        getData();
+//                    }
+//                });
+//            }
+//        }).start();
+//
+//    }
+/*
+* 评论信息显示
+* */
+    private void createAdapter(RecyclerView recyclerView, List<DiscussReturn> content) {
+        final ParallaxRecyclerAdapter<DiscussReturn> adapter = new ParallaxRecyclerAdapter<DiscussReturn>(content) {
+            @Override
+            public void onBindViewHolderImpl(RecyclerView.ViewHolder viewHolder, ParallaxRecyclerAdapter<DiscussReturn> adapter, int i) {
+               // ((ViewHolder) viewHolder).textView.setText(adapter.getData().get(i));
+                DiscussReturn discuss = content.get(i);
+                int floor=i+1;
+                Date time=discuss.getTime();
+                SimpleDateFormat format1 = new SimpleDateFormat("yyyy.MM.dd HH");
+                String tTime= format1.format(time);
+                ((ViewHolder) viewHolder).userNameText.setText(discuss.getUsername()+":");
+                ((ViewHolder) viewHolder).bodyText.setText(discuss.getBody());
+                ((ViewHolder)viewHolder).timeText.setText(tTime);
+                ((ViewHolder)viewHolder).floorText.setText(floor+"楼");
             }
 
             @Override
-            public RecyclerView.ViewHolder onCreateViewHolderImpl(ViewGroup viewGroup, final ParallaxRecyclerAdapter<String> adapter, int i) {
-                // Here is where you inflate your row and pass it to the constructor of your ViewHolder
-                return new SimpleViewHolder(getLayoutInflater().inflate(android.R.layout.simple_list_item_1, viewGroup, false));
+            public RecyclerView.ViewHolder onCreateViewHolderImpl(ViewGroup viewGroup, final ParallaxRecyclerAdapter<DiscussReturn> adapter, int i) {
+                return new ViewHolder(getLayoutInflater().inflate(R.layout.dicuss_item, viewGroup, false));
             }
 
             @Override
-            public int getItemCountImpl(ParallaxRecyclerAdapter<String> adapter) {
-                // return the content of your array
+            public int getItemCountImpl(ParallaxRecyclerAdapter<DiscussReturn> adapter) {
                 return content.size();
             }
         };
 
+        adapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
+            @Override
+            public void onClick(View v, int position) {
+                Toast.makeText(DetailsActivity.this, "You clicked '" + position + "'", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-
-
-        headView = getLayoutInflater().inflate(R.layout.details_header, myRecycler, false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        headView = getLayoutInflater().inflate(R.layout.details_header, recyclerView, false);
         ImageView headreImageView = headView.findViewById(R.id.imageView2);
         headreImageView.setImageBitmap(bitmap);
         TextView fjText = headView.findViewById(R.id.fjtitle);
@@ -112,29 +174,53 @@ public class DetailsActivity extends Activity {
         typeText=headView.findViewById(R.id.type);
         timeText=headView.findViewById(R.id.time);
         updateTimeText=headView.findViewById(R.id.updatetime);
+        disButton=headView.findViewById(R.id.discuss);
 
         fjText.setText(fjName);
+        Log.d("myapplog", "Title: " + fjName);
+        adapter.setParallaxHeader(headView, recyclerView);
+        adapter.setData(content);
+        recyclerView.setAdapter(adapter);
 
 
-        stringAdapter.setParallaxHeader(headView, myRecycler);
-        stringAdapter.setOnParallaxScroll(new ParallaxRecyclerAdapter.OnParallaxScroll() {
+        disButton=headView.findViewById(R.id.discuss);
+        disButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onParallaxScroll(float percentage, float offset, View parallax) {
-                //TODO: implement toolbar alpha. See README for details
+            public void onClick(View v) {
+                Intent intent=new Intent(DetailsActivity.this, DiscussActivity.class);
+                int fId=fjId;
+                intent.putExtra("fjId",fId);
+                String userId=getPreference(v.getContext(), "id");
+                intent.putExtra("userid",userId);
+                startActivity(intent);
+                //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
             }
         });
-        stringAdapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
-            @Override
-            public void onClick(View view, int i) {
-                //TODO
-                Toast.makeText(DetailsActivity.this, String.valueOf(i), Toast.LENGTH_LONG).show();
-            }
-        });
-        myRecycler.setAdapter(stringAdapter);
-
-        fobject = getData();
     }
 
+    /*
+    * 初始化textview
+    * */
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView userNameText;
+        public TextView bodyText;
+        public TextView timeText;
+        public TextView floorText;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            userNameText = itemView.findViewById(R.id.username);
+            bodyText = itemView.findViewById(R.id.dicuss_body);
+            timeText=itemView.findViewById(R.id.dicuss_time);
+            floorText=itemView.findViewById(R.id.floor);
+        }
+    }
+
+
+
+    /*
+    * 前端番剧信息赋值
+    * */
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch(msg.what){
@@ -179,19 +265,10 @@ public class DetailsActivity extends Activity {
         };
     };
 
-    static class SimpleViewHolder extends RecyclerView.ViewHolder {
 
-        public SimpleViewHolder(View itemView) {
-            super(itemView);
-        }
-    }
-
-    public String getListString(int position) {
-        return position + " - android";
-    }
-
-
-
+    /*
+    * 通过番剧id查找番剧具体信息
+    * */
    private Fobject getData(){
     Request request = new Request.Builder()
             .url(MyApplication.getURL() + "fobject/byid?id=" + fjId)
@@ -208,7 +285,7 @@ public class DetailsActivity extends Activity {
             String body = response.body().string();
 
             FjDetailBean temp = GsonUtil.GsonToBean(body, FjDetailBean.class);
-            Log.d("myapplog", "hahah1:" + temp.getData().toString());
+            Log.d("myapplog", "Detail:" + temp.getData().toString());
 
             fobject = temp.getData();
             //fobject = GsonUtil.GsonToBean(temp.getData(), Fobject.class);
@@ -221,6 +298,33 @@ public class DetailsActivity extends Activity {
         }
     });
        return fobject;
+    }
+
+
+
+    /*
+    * 获取本番剧的评论信息
+    * */
+    private List<DiscussReturn> initList () {
+        List<DiscussReturn> discusses = new ArrayList<>();
+        Request request = new Request.Builder()
+                .url(MyApplication.getURL() + "discuss/fobject?fobjectid=" + fjId)
+                .build();
+        Call call = client.newCall(request);
+        try {
+            Response response = call.execute();
+            String body = response.body().string();
+            DiscussList discussList = GsonUtil.GsonToBean(body, DiscussList.class);
+            discusses = discussList.getData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return discusses;
+    }
+
+    public static String getPreference(Context context, String key) {
+        SharedPreferences preference = context.getSharedPreferences("cookies", Context.MODE_PRIVATE);
+        return preference.getString(key, "");
     }
 
 

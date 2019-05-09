@@ -56,6 +56,10 @@
                 android:id="@+id/nav_Sunday"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/Sunday" />
+            <item
+                android:id="@+id/nav_Finish"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Finish" />
         </menu>
     </item>
 

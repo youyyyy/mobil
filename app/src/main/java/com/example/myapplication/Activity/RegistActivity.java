@@ -160,33 +160,6 @@ public class RegistActivity extends AppCompatActivity {
     public void runHttp (ProgressDialog progressDialog) throws Exception{
 
         client = new OkHttpClient.Builder()
-             /*   .cookieJar(new CookieJar() {
-                    @Override
-                    public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-                        Log.d("myapplog", "cookies url: " + url.toString());
-                        for (Cookie cookie : cookies) {
-                            Log.d("myapplog", "cookies: " + cookie.toString());
-                            saveCookie(cookie.value().toString(), cookie.expiresAt());
-                        }
-                        runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            progressDialog.cancel();
-                        }
-                    });
-                }
-
-                    @Override
-                    public List<Cookie> loadForRequest(HttpUrl url) {
-                        ArrayList<Cookie> cookies = new ArrayList<>();
-                        Cookie cookie = new Cookie.Builder()
-                                .hostOnlyDomain(url.host())
-                                .name("login").value("123")
-                                .build();
-                        cookies.add(cookie);
-                        return cookies;
-                    }
-                })*/
                 .build();
 
         int gender;

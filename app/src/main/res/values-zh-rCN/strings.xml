@@ -35,4 +35,7 @@
     <string name="login">登陆</string>
     <string name="loginError">请检查您的电话或密码</string>
     <string name="menu_recommend">个人推荐</string>
+    <string name="suggect">空评论不能发送哟~</string>
+    <string name="dissuccess">评论成功</string>
+    <string name="Finish">已完结</string>
 </resources>

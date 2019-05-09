@@ -53,11 +53,14 @@
     <string name="Friday">Friday</string>
     <string name="Saturday">Saturday</string>
     <string name="Sunday">Sunday</string>
+    <string name="Finish">Finish</string>
     <string name="Developing">Developing...</string>
 
     <!-- user -->
     <string name="ID">ID:</string>
 
-
+    <!-- discuss-->
+    <string name="suggect">can not be empty</string>
+    <string name="dissuccess">dicuss success</string>
 
 </resources>

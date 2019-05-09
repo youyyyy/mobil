@@ -52,13 +52,14 @@ public class MainActivity extends AppCompatActivity
 
     private OkHttpClient client = new OkHttpClient();
 
-    private String dateForFJ = "";
+    private String dateForFJ = getDateForFJ();
 //    final Calendar c = Calendar.getInstance();
 //    c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 //    dateForFJ = c.get(Calendar.DAY_OF_WEEK);
     private List<FJList> fjLists = new ArrayList<>();
     private List<FJList> tempfjLists = new ArrayList<>();
     private ObjectAdapter objectAdapter;
+    private String userType;
 
 
     @Override
@@ -137,6 +138,7 @@ public class MainActivity extends AppCompatActivity
 //
 //        View headerView = navigationView.getHeaderView(0);
 //
+        getDateForFJ();
   }
 
     @Override
@@ -222,6 +224,11 @@ public class MainActivity extends AppCompatActivity
             dateForFJ = "1";
             updateData();
         }
+        else if (id == R.id.nav_Finish) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
+            dateForFJ = "0";
+            updateData();
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -297,7 +304,6 @@ public class MainActivity extends AppCompatActivity
 
     private FJList getImage(Fobject fobject){
         FJList temp = new FJList();
-
         OkHttpClient client = new OkHttpClient.Builder().readTimeout(5, TimeUnit.SECONDS).build();
         Request request = new Request.Builder()
                 .url(MyApplication.getURL() + "fobject/get?id=" + fobject.getId())
