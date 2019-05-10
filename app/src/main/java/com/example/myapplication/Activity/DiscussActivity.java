@@ -130,7 +130,7 @@ public class DiscussActivity extends AppCompatActivity {
 
         Discuss discuss=new Discuss();
         discuss.setBody(message);
-        discuss.setUsername(name);
+        //discuss.setUsername(name);
         discuss.setUserid(uId);
         discuss.setPid(pId);
         discuss.setPuid(puId);

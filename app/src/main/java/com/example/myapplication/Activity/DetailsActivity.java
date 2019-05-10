@@ -25,6 +25,7 @@ import com.example.myapplication.Bean.DiscussList;
 import com.example.myapplication.Bean.DiscussReturn;
 import com.example.myapplication.Bean.FjDetailBean;
 import com.example.myapplication.Bean.Fobject;
+import com.example.myapplication.Bean.User;
 import com.example.myapplication.R;
 import com.example.myapplication.Util.GsonUtil;
 import com.poliveira.parallaxrecyclerview.ParallaxRecyclerAdapter;
@@ -51,6 +52,7 @@ public class DetailsActivity extends Activity {
     private Bitmap bitmap;
     private String fjName;
     private Fobject fobject;
+    private User user;
     private View headView;
     private int uId;
     private TextView companyText;
@@ -62,6 +64,8 @@ public class DetailsActivity extends Activity {
     private TextView timeText;
     private TextView updateTimeText;
     private Button disButton;
+
+    private String userTrueName;
     //private TextView userNameText;
 
     private List<DiscussReturn> content = new ArrayList<>();
@@ -106,7 +110,6 @@ public class DetailsActivity extends Activity {
                 });
             }
         }).start();
-
 
 
        // initList();
@@ -288,7 +291,7 @@ public class DetailsActivity extends Activity {
                     }
                 }
             }
-        };
+        }
     };
 
 

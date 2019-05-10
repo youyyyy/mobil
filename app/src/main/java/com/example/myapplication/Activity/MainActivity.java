@@ -183,7 +183,8 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Intent tempIntent = new Intent(MainActivity.this, SelfActivity.class);
-                startActivity(tempIntent);
+            tempIntent.putExtra("uid", getUid(this));
+            startActivity(tempIntent);
             // Handle the camera action
         } else if (id == R.id.nav_message) {
 
@@ -324,8 +325,8 @@ public class MainActivity extends AppCompatActivity
         return temp;
     }
 
-    public static String getPreference(Context context, String key) {
+    public static String getUid(Context context) {
         SharedPreferences preference = context.getSharedPreferences("cookies", Context.MODE_PRIVATE);
-        return preference.getString(key, "");
+        return preference.getString("id", "");
     }
 }
