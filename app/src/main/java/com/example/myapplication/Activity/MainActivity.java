@@ -1,5 +1,6 @@
 package com.example.myapplication.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -182,7 +183,6 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Intent tempIntent = new Intent(MainActivity.this, SelfActivity.class);
-            tempIntent.putExtra("hhh", "hhh from a");
                 startActivity(tempIntent);
             // Handle the camera action
         } else if (id == R.id.nav_message) {
@@ -322,5 +322,10 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
         return temp;
+    }
+
+    public static String getPreference(Context context, String key) {
+        SharedPreferences preference = context.getSharedPreferences("cookies", Context.MODE_PRIVATE);
+        return preference.getString(key, "");
     }
 }

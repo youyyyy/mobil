@@ -52,6 +52,7 @@ public class DetailsActivity extends Activity {
     private String fjName;
     private Fobject fobject;
     private View headView;
+    private int uId;
     private TextView companyText;
     private TextView regionText;
     private TextView actorText;
@@ -61,6 +62,7 @@ public class DetailsActivity extends Activity {
     private TextView timeText;
     private TextView updateTimeText;
     private Button disButton;
+    //private TextView userNameText;
 
     private List<DiscussReturn> content = new ArrayList<>();
     private RecyclerView myRecycler;
@@ -89,6 +91,7 @@ public class DetailsActivity extends Activity {
         bitmap = BitmapFactory.decodeByteArray(bitMapByte, 0, bitMapByte.length);
         fjName = intent.getStringExtra("fjname");
 
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -103,6 +106,10 @@ public class DetailsActivity extends Activity {
                 });
             }
         }).start();
+
+
+
+       // initList();
     }
 
 //    @Override
@@ -137,6 +144,8 @@ public class DetailsActivity extends Activity {
                 Date time=discuss.getTime();
                 SimpleDateFormat format1 = new SimpleDateFormat("yyyy.MM.dd HH");
                 String tTime= format1.format(time);
+                uId=discuss.getUserid();
+                Log.d("myapplog", "获得用户id "+uId);
                 ((ViewHolder) viewHolder).userNameText.setText(discuss.getUsername()+":");
                 ((ViewHolder) viewHolder).bodyText.setText(discuss.getBody());
                 ((ViewHolder)viewHolder).timeText.setText(tTime);
@@ -145,7 +154,20 @@ public class DetailsActivity extends Activity {
 
             @Override
             public RecyclerView.ViewHolder onCreateViewHolderImpl(ViewGroup viewGroup, final ParallaxRecyclerAdapter<DiscussReturn> adapter, int i) {
-                return new ViewHolder(getLayoutInflater().inflate(R.layout.dicuss_item, viewGroup, false));
+
+
+                ViewHolder holder =  new ViewHolder(getLayoutInflater().inflate(R.layout.dicuss_item, viewGroup, false));
+                holder.userNameText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(DetailsActivity.this, UserActivity.class);
+                        intent.putExtra("userid",uId);
+                        Log.d("myapplog", "onClick: "+uId);
+                        startActivity(intent);
+                        //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
+                    }
+                });
+                return holder;
             }
 
             @Override
@@ -196,6 +218,9 @@ public class DetailsActivity extends Activity {
                 //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
             }
         });
+
+
+
     }
 
     /*
@@ -214,6 +239,7 @@ public class DetailsActivity extends Activity {
             timeText=itemView.findViewById(R.id.dicuss_time);
             floorText=itemView.findViewById(R.id.floor);
         }
+
     }
 
 
@@ -314,6 +340,7 @@ public class DetailsActivity extends Activity {
         try {
             Response response = call.execute();
             String body = response.body().string();
+            Log.d("myapplog", "return "+body);
             DiscussList discussList = GsonUtil.GsonToBean(body, DiscussList.class);
             discusses = discussList.getData();
         } catch (IOException e) {
