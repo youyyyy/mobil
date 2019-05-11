@@ -36,7 +36,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview2"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -59,7 +59,7 @@
         android:layout_below="@id/cardview2"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

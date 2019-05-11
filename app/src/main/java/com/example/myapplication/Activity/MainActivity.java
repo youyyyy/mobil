@@ -233,6 +233,11 @@ public class MainActivity extends AppCompatActivity
             dateForFJ = "0";
             updateData();
         }
+        else if (id == R.id.nav_All) {
+            Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
+            dateForFJ = "8";
+            updateData();
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -255,11 +260,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initList () {
+        String URL;
+        if(dateForFJ=="8")
+            URL=MyApplication.getURL() +"fobject/selectall";
+        else
+            URL=MyApplication.getURL() + "fobject/bytime?updatetime=" + dateForFJ;
 
         //TODO
         //开始动画
         Request request = new Request.Builder()
-                .url(MyApplication.getURL() + "fobject/bytime?updatetime=" + dateForFJ)
+                .url(URL)
                 .build();
 
         Log.d("myapplog", "URL: " + MyApplication.getURL() + "fobject/bytime?updatetime=" + dateForFJ);
