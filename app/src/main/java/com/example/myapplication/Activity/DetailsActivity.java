@@ -233,7 +233,7 @@ public class DetailsActivity extends Activity {
         deliveryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(DetailsActivity.this, DiscussActivity.class);
+                Intent intent=new Intent(DetailsActivity.this, WebActivity.class);
                 int fId=fjId;
                 intent.putExtra("del_fjId",fId);
                 startActivity(intent);
