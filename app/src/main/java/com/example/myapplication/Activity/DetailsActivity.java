@@ -90,10 +90,10 @@ public class DetailsActivity extends Activity {
 
 
         Intent intent = getIntent();
-        fjId = intent.getIntExtra("id", 0);
+        fjId = intent.getIntExtra("fj_id", 0);
         byte[] bitMapByte = intent.getByteArrayExtra("bitmap");
         bitmap = BitmapFactory.decodeByteArray(bitMapByte, 0, bitMapByte.length);
-        fjName = intent.getStringExtra("fjname");
+        fjName = intent.getStringExtra("fj_name");
 
 
         new Thread(new Runnable() {
@@ -114,6 +114,12 @@ public class DetailsActivity extends Activity {
 
        // initList();
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        onCreate(null);
+//    }
 
 //    @Override
 //    public void onResume(){
@@ -145,27 +151,27 @@ public class DetailsActivity extends Activity {
                 DiscussReturn discuss = content.get(i);
                 int floor=i+1;
                 Date time=discuss.getTime();
-                SimpleDateFormat format1 = new SimpleDateFormat("yyyy.MM.dd HH");
+                SimpleDateFormat format1 = new SimpleDateFormat("yyyy.MM.dd HH时");
                 String tTime= format1.format(time);
-                uId=discuss.getUserid();
-                Log.d("myapplog", "获得用户id "+uId);
                 ((ViewHolder) viewHolder).userNameText.setText(discuss.getUsername()+":");
                 ((ViewHolder) viewHolder).bodyText.setText(discuss.getBody());
                 ((ViewHolder)viewHolder).timeText.setText(tTime);
                 ((ViewHolder)viewHolder).floorText.setText(floor+"楼");
+                Log.d("myapplog", discuss.getUsername() + "id is:" + discuss.getUserid());
             }
 
             @Override
             public RecyclerView.ViewHolder onCreateViewHolderImpl(ViewGroup viewGroup, final ParallaxRecyclerAdapter<DiscussReturn> adapter, int i) {
-
-
                 ViewHolder holder =  new ViewHolder(getLayoutInflater().inflate(R.layout.dicuss_item, viewGroup, false));
                 holder.userNameText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        int position = holder.getAdapterPosition() - 1;
+                        DiscussReturn discuss = adapter.getData().get(position);
+                        Log.d("myapplog", "you clicked :" + position);
                         Intent intent=new Intent(DetailsActivity.this, UserActivity.class);
-                        intent.putExtra("userid",uId);
-                        Log.d("myapplog", "onClick: "+uId);
+                        intent.putExtra("user_userid",discuss.getUserid());
+                        Log.d("myapplog", discuss.getUsername() + "id put in intent is:" + discuss.getUserid());
                         startActivity(intent);
                         //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
                     }
@@ -214,9 +220,9 @@ public class DetailsActivity extends Activity {
             public void onClick(View v) {
                 Intent intent=new Intent(DetailsActivity.this, DiscussActivity.class);
                 int fId=fjId;
-                intent.putExtra("fjId",fId);
+                intent.putExtra("dis_fjId",fId);
                 String userId=getPreference(v.getContext(), "id");
-                intent.putExtra("userid",userId);
+                intent.putExtra("dis_userid",userId);
                 startActivity(intent);
                 //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
             }
@@ -245,8 +251,6 @@ public class DetailsActivity extends Activity {
 
     }
 
-
-
     /*
     * 前端番剧信息赋值
     * */
@@ -254,11 +258,20 @@ public class DetailsActivity extends Activity {
         public void handleMessage(Message msg) {
             switch(msg.what){
                 case 200: {
-                    companyText.setText("制作公司："+fobject.getCompany());
+                    if(fobject.getCompany().equals("null"))
+                        companyText.setText("制作公司："+"暂无数据~");
+                    else
+                        companyText.setText("制作公司："+fobject.getCompany());
                     regionText.setText("地区："+fobject.getRegion());
-                    actorText.setText("声优："+fobject.getActor());
+                    if(fobject.getActor().equals("null"))
+                        actorText.setText("声优："+"暂无数据~");
+                    else
+                        actorText.setText("声优："+fobject.getActor());
                     typeText.setText("标签："+fobject.getType());
-                    focusText.setText("看点："+fobject.getFocus());
+                    if(fobject.getFocus().equals("null"))
+                        focusText.setText("看点："+"暂无数据~");
+                    else
+                        focusText.setText("看点："+fobject.getFocus());
                     fjAbstractText.setText("简介："+fobject.getObjectabstract());
                     if (fobject.getMonth()==201904)
                         timeText.setText("更新季度："+"2019年4月");
@@ -312,6 +325,7 @@ public class DetailsActivity extends Activity {
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             String body = response.body().string();
+            Log.d("myapplog", "body: " + body);
 
             FjDetailBean temp = GsonUtil.GsonToBean(body, FjDetailBean.class);
             Log.d("myapplog", "Detail:" + temp.getData().toString());

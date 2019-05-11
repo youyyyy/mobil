@@ -40,8 +40,8 @@ public class UserActivity extends AppCompatActivity {
     TextView genderText;
     @BindView(R.id.user_type)
     TextView typeText;
-    @BindView(R.id.user_phone)
-    TextView phoneText;
+//    @BindView(R.id.user_phone)
+//    TextView phoneText;
     @BindView(R.id.user_email)
     TextView emailText;
     @BindView(R.id.user_csignature)
@@ -56,12 +56,13 @@ public class UserActivity extends AppCompatActivity {
 
         ButterKnife.bind(UserActivity.this);
         Intent intent = getIntent();
-        userId=intent.getIntExtra("userid",0);
-        Log.d("myapplog", "用户资料Id: "+userId);
+        userId = intent.getIntExtra("user_userid",0);
+        Log.d("myapplog", "用户资料Id: " + userId);
 
 
         getData();
     }
+
 
 
     private Handler mHandler = new Handler() {
@@ -83,7 +84,7 @@ public class UserActivity extends AppCompatActivity {
                     } else {
                         typeText.setText("Ta的喜好：" + user.getType());
                     }
-                    phoneText.setText("电话："+user.getPhonenum());
+                   // phoneText.setText("电话："+user.getPhonenum());
                     emailText.setText("邮箱："+user.getEmail());
 
                     if(user.getCsignature()=="null"){
@@ -102,6 +103,8 @@ public class UserActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url(MyApplication.getURL() + "user/showuser?id=" + userId)
                 .build();
+
+        Log.d("myapplog","request url: " + MyApplication.getURL() + "user/showuser?id=" + userId);
 
         client.newCall(request).enqueue(new Callback() {
             @Override

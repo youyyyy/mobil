@@ -183,12 +183,15 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Intent tempIntent = new Intent(MainActivity.this, SelfActivity.class);
-            tempIntent.putExtra("uid", getUid(this));
+            tempIntent.putExtra("self_uid", getUid(this));
             startActivity(tempIntent);
             // Handle the camera action
         } else if (id == R.id.nav_message) {
 
         } else if(id==R.id.nav_recommend){
+            Intent tempIntent = new Intent(MainActivity.this, SelfActivity.class);
+            tempIntent.putExtra("self_uid", getUid(this));
+            startActivity(tempIntent);
 
         }else if (id == R.id.nav_Monday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();

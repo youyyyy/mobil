@@ -63,4 +63,7 @@
     <string name="suggect">can not be empty</string>
     <string name="dissuccess">dicuss success</string>
 
+    <!-- 个性签名-->
+    <string name="cedit">edit success</string>
+
 </resources>

@@ -43,9 +43,9 @@ public class DiscussActivity extends AppCompatActivity {
 
     private User user;
 
-    int fId;
-    String userId;
-    String userName;
+    private int fId;
+    private String userId;
+    private String userName;
 
     @BindView(R.id.edit_discuss)
     EditText eDiscussText;
@@ -58,10 +58,8 @@ public class DiscussActivity extends AppCompatActivity {
         setContentView(R.layout.activity_discuss);
         ButterKnife.bind(DiscussActivity.this);
         Intent intent = getIntent();
-        fId=intent.getIntExtra("fjId",0);
-        Log.d("myapplog", "fj: " + fId);
-        userId=intent.getStringExtra("userid");
-        Log.d("myapplog", "user: " + userId);
+        fId=intent.getIntExtra("dis_fjId",0);
+        userId=intent.getStringExtra("dis_userid");
 
 
         sDiscussButton.setOnClickListener(new View.OnClickListener() {
@@ -127,10 +125,11 @@ public class DiscussActivity extends AppCompatActivity {
         int pId=0;
         int puId=0;
         String name=userName;
+        Log.d("myapplog", "sendDis: "+name);
 
         Discuss discuss=new Discuss();
         discuss.setBody(message);
-        //discuss.setUsername(name);
+        discuss.setUsername(name);
         discuss.setUserid(uId);
         discuss.setPid(pId);
         discuss.setPuid(puId);
@@ -164,13 +163,17 @@ public class DiscussActivity extends AppCompatActivity {
                     }
                 });
 //                startActivity(new Intent(RegistActivity.this, LoginActivity.class));
-                eDiscussText.setText("");
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        eDiscussText.setText("");
+                    }
+                });
             }
         });
 
     }
-
-
 
 
     /*

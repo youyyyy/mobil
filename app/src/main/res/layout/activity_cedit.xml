@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/cedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="个性签名" />
+    <EditText
+        android:id="@+id/cedit_csignature"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/cedit"
+        android:layout_marginTop="10dp"
+        android:enabled="true"
+        android:maxLines="5"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
+        android:hint="请说点什么吧~"/>
+    <Button
+        android:id="@+id/send_cedit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cedit_csignature"
+        android:layout_alignParentEnd="true"
+        android:text="保存"/>
+
+
+
+
+</RelativeLayout>

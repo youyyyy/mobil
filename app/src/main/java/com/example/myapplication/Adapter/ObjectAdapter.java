@@ -49,7 +49,7 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
                 FJList object = mObjectList.get(position);
                 int id = (object.getId());
                 Intent intent = new Intent(view.getContext(), DetailsActivity.class);
-                intent.putExtra("id", id);
+                intent.putExtra("fj_id", id);
 
                 Bitmap bitmap = object.getImage();
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -58,7 +58,7 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
                 intent.putExtra("bitmap", bitMapByte);
 
                 String name=object.getName();
-                intent.putExtra("fjname",name);
+                intent.putExtra("fj_name",name);
 
                 view.getContext().startActivity(intent);
                 //Object object = mObjectList.get(position);
@@ -71,7 +71,7 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
                 FJList object = mObjectList.get(position);
                 int id = (object.getId());
                 Intent intent = new Intent(view.getContext(), DetailsActivity.class);
-                intent.putExtra("id", id);
+                intent.putExtra("fj_id", id);
 
                 Bitmap bitmap = object.getImage();
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -80,7 +80,7 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
                 intent.putExtra("bitmap", bitMapByte);
 
                 String name=object.getName();
-                intent.putExtra("fjname",name);
+                intent.putExtra("fj_name",name);
 
                 view.getContext().startActivity(intent);
             }
