@@ -64,6 +64,7 @@ public class DetailsActivity extends Activity {
     private TextView timeText;
     private TextView updateTimeText;
     private Button disButton;
+    private Button deliveryButton;
 
     private String userTrueName;
     //private TextView userNameText;
@@ -206,6 +207,7 @@ public class DetailsActivity extends Activity {
         timeText=headView.findViewById(R.id.time);
         updateTimeText=headView.findViewById(R.id.updatetime);
         disButton=headView.findViewById(R.id.discuss);
+        deliveryButton=headView.findViewById(R.id.delivery);
 
         fjText.setText(fjName);
         Log.d("myapplog", "Title: " + fjName);
@@ -228,7 +230,16 @@ public class DetailsActivity extends Activity {
             }
         });
 
-
+        deliveryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DetailsActivity.this, DiscussActivity.class);
+                int fId=fjId;
+                intent.putExtra("del_fjId",fId);
+                startActivity(intent);
+                //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
+            }
+        });
 
     }
 

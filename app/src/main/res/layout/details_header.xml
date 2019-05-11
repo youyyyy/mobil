@@ -5,6 +5,13 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/delivery"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:text="传送"/>
+    <Button
         android:id="@+id/discuss"
         android:layout_marginTop="8dp"
         android:layout_alignParentEnd="true"
