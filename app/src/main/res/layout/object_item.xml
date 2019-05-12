@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/object_image"
         android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="5dp" />
 
     <com.google.android.material.card.MaterialCardView
