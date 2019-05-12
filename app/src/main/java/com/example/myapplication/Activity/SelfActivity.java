@@ -97,14 +97,16 @@ public class SelfActivity extends AppCompatActivity {
                     } else if(user.getGender()==3){
                         genderText.setText("性别："+"保密");
                     }
-                    if(user.getType()=="null") {
+                    if(user.getType().equals("null")) {
                         typeText.setText("Ta还没填写哟~");
                     } else {
                         typeText.setText("Ta的喜好：" + user.getType());
                     }
                     // phoneText.setText("电话："+user.getPhonenum());
                     emailText.setText("邮箱："+user.getEmail());
-
+                    if(user.getCsignature().equals("null"))
+                        csignatureText.setText("这个人很懒，什么也没留下~");
+                    else
                     csignatureText.setText(user.getCsignature());
 
                 }

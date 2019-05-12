@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Application.MyApplication;
-import com.example.myapplication.Bean.User;
 import com.example.myapplication.Bean.normalReturnBean;
 import com.example.myapplication.R;
 import com.example.myapplication.Util.GsonUtil;
@@ -165,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("myapplog", "hahah:" + body);
 
                 normalReturnBean temp = GsonUtil.GsonToBean(body, normalReturnBean.class);
-                User user = GsonUtil.GsonToBean(temp.getData().toString(), User.class);
+               // User user = GsonUtil.GsonToBean(temp.getData().toString(), User.class);
                // Log.d("myapplog", user.getPhonenum());
                 if(temp.getCode()==404){
                     runOnUiThread(new Runnable() {

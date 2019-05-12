@@ -165,10 +165,9 @@ public class RegistActivity extends AppCompatActivity {
         int gender;
         if(manSelected=true)
             gender=1;
-        else if (womanSelected=true)
-            gender=2;
         else
-            gender=3;
+            gender=2;
+
 
         String username=nameText.getText().toString();
         String password=passwordText.getText().toString();
@@ -194,7 +193,7 @@ public class RegistActivity extends AppCompatActivity {
         user.setType(type);
 
         if (user.getCsignature().isEmpty() || user.getCsignature() == null) {
-            user.setCsignature("这个人很懒，什么也没留下~");
+            user.setCsignature("null");
         }
 
         if (user.getType().isEmpty() || user.getType() == null) {
