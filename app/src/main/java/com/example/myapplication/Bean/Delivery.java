@@ -7,6 +7,8 @@ public class Delivery {
 
     private String url;
 
+    public Delivery(){}
+
     public int getId() {
         return id;
     }
