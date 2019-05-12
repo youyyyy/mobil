@@ -40,4 +40,6 @@
     <string name="Finish">完结番</string>
     <string name="cedit">发表签名成功</string>
     <string name="All">所有新番</string>
+    <string name="nameedit">修改成功</string>
+    <string name="donghua">正在操作中哟~</string>
 </resources>

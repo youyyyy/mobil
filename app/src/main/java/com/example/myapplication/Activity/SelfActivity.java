@@ -53,6 +53,8 @@ public class SelfActivity extends AppCompatActivity {
     TextView emailText;
     @BindView(R.id.self_edit_csignature)
     TextView edtiCsignature;
+    @BindView(R.id.self_edit_name)
+    TextView editName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,17 @@ public class SelfActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SelfActivity.this, CEditActivity.class);
+                String userId=getPreference(v.getContext(), "id");
+                intent.putExtra("edit_userid",userId);
+                startActivity(intent);
+                //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
+            }
+        });
+
+        editName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SelfActivity.this, NameEditActivity.class);
                 String userId=getPreference(v.getContext(), "id");
                 intent.putExtra("edit_userid",userId);
                 startActivity(intent);
