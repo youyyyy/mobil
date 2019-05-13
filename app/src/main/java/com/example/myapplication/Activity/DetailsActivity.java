@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,7 +65,9 @@ public class DetailsActivity extends Activity {
     private TextView timeText;
     private TextView updateTimeText;
     private Button disButton;
-    private Button deliveryButton;
+//    private Button deliveryButton;
+    private ImageView parentImage;
+    private CardView cardView2;
 
     private String userTrueName;
     //private TextView userNameText;
@@ -207,7 +210,9 @@ public class DetailsActivity extends Activity {
         timeText=headView.findViewById(R.id.time);
         updateTimeText=headView.findViewById(R.id.updatetime);
         disButton=headView.findViewById(R.id.discuss);
-        deliveryButton=headView.findViewById(R.id.delivery);
+//        deliveryButton=headView.findViewById(R.id.delivery);
+        cardView2=headView.findViewById(R.id.cardview2);
+        parentImage=headView.findViewById(R.id.imageView2);
 
         fjText.setText(fjName);
         Log.d("myapplog", "Title: " + fjName);
@@ -230,7 +235,18 @@ public class DetailsActivity extends Activity {
             }
         });
 
-        deliveryButton.setOnClickListener(new View.OnClickListener() {
+//        deliveryButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(DetailsActivity.this, WebActivity.class);
+//                int fId=fjId;
+//                intent.putExtra("del_fjId",fId);
+//                startActivity(intent);
+//                //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
+//            }
+//        });
+
+        parentImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(DetailsActivity.this, WebActivity.class);
@@ -240,6 +256,7 @@ public class DetailsActivity extends Activity {
                 //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
             }
         });
+
 
     }
 

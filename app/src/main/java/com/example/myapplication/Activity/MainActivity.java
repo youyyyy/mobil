@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_message) {
 
         } else if(id==R.id.nav_recommend){
-            Intent tempIntent = new Intent(MainActivity.this, SelfActivity.class);
+            Intent tempIntent = new Intent(MainActivity.this, SelfObjectActivity.class);
             tempIntent.putExtra("self_uid", getUid(this));
 
             startActivity(tempIntent);

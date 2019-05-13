@@ -63,7 +63,7 @@ public class CEditActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(CEditActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
+        progressDialog.setMessage(getString(R.string.donghua));
         progressDialog.show();
 
         new Thread(new Runnable() {

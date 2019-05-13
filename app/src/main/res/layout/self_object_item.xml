@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+
+    <!--<com.google.android.material.card.MaterialCardView-->
+        <!--android:id="@+id/cardview_item"-->
+        <!--android:layout_marginTop="12dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--app:cardCornerRadius="10dp"-->
+        <!--app:cardElevation="5dp"-->
+        <!--android:clickable="true"-->
+        <!--android:foreground="?android:attr/selectableItemBackground">-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/sef_object_cardview"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="20dp">
+    <ImageView
+        android:id="@+id/self_object_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/self_object_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sef_object_cardview"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:layout_marginTop="10dp" />
+
+
+    <!--</com.google.android.material.card.MaterialCardView>-->
+
+</RelativeLayout>
