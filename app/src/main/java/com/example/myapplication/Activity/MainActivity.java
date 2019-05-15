@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
 
     private OkHttpClient client = new OkHttpClient();
 
-    private String dateForFJ = getDateForFJ();
+    private String dateForFJ = "";
 //    final Calendar c = Calendar.getInstance();
 //    c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 //    dateForFJ = c.get(Calendar.DAY_OF_WEEK);
@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity
 //        View headerView = navigationView.getHeaderView(0);
 //
         getDateForFJ();
+        dateForFJ="getDateForFJ()";
   }
 
     @Override

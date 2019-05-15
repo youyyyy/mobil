@@ -208,19 +208,28 @@ public class LoginActivity extends AppCompatActivity {
         String password = passWordText.getText().toString();
 
         if (phonenum.isEmpty() || phonenum.contains(" ")) {
-            phoneNumdText.setError("Plz check your username!");
+            phoneNumdText.setError(getString(R.string.input_phone_hint));
             valid = false;
         } else {
             phoneNumdText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+        if (password.length() < 4 || password.length() > 10) {
             //_passwordText.setError("between 4 and 10 alphanumeric characters");
             passWordText.setError(getString(R.string.password_err_hint));
             valid = false;
         } else {
             passWordText.setError(null);
         }
+
+        if (password.isEmpty()) {
+            //_passwordText.setError("between 4 and 10 alphanumeric characters");
+            passWordText.setError(getString(R.string.input_pwd_hint));
+            valid = false;
+        } else {
+            passWordText.setError(null);
+        }
+
 
         return valid;
     }

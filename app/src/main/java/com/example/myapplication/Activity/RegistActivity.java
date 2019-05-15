@@ -116,7 +116,7 @@ public class RegistActivity extends AppCompatActivity {
 
     private String[] initLabel () {
         String[] mVals = new String[]
-                {"搞笑", "科幻", "动作", "热血", "青春", "恐怖","恋爱","乙女","励志","冒险","奇幻","轻小说","励志","科幻","泡面番","运动","百合","科幻","耽美"};
+                {"搞笑" , "动作", "热血", "青春", "恐怖","恋爱","乙女","励志","冒险","奇幻","轻小说","励志","科幻","泡面番","运动","百合","科幻","耽美"};
         flowLayout.setMaxSelectCount(3);
         flowLayout.setAdapter(new TagAdapter<String>(mVals)
         {
