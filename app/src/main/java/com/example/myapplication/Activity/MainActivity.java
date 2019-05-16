@@ -96,6 +96,13 @@ public class MainActivity extends AppCompatActivity
         objectAdapter = new ObjectAdapter(fjLists);
         recyclerView.setAdapter(objectAdapter);
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                dateForFJ=getDateForFJ();
+                updateData();
+            }
+        }).start();
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
@@ -138,8 +145,6 @@ public class MainActivity extends AppCompatActivity
 //
 //        View headerView = navigationView.getHeaderView(0);
 //
-        getDateForFJ();
-        dateForFJ="getDateForFJ()";
   }
 
     @Override
