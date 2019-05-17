@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.TypeEditActivity"></activity>
+        <activity android:name=".Activity.GenderEditActivity"></activity>
+        <activity android:name=".Activity.TypeEditActivity" />
         <activity android:name=".Activity.SelfObjectActivity" />
         <activity android:name=".Activity.NameEditActivity" />
         <activity android:name=".Activity.WebActivity" />

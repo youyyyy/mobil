@@ -57,6 +57,8 @@ public class SelfActivity extends AppCompatActivity {
     TextView editName;
     @BindView(R.id.self_edit_type)
     TextView editType;
+    @BindView(R.id.self_edit_gender)
+    TextView editGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,17 @@ public class SelfActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SelfActivity.this, TypeEditActivity.class);
+                String userId=getPreference(v.getContext(), "id");
+                intent.putExtra("edit_userid",userId);
+                startActivity(intent);
+                //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
+            }
+        });
+
+        editGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SelfActivity.this, GenderEditActivity.class);
                 String userId=getPreference(v.getContext(), "id");
                 intent.putExtra("edit_userid",userId);
                 startActivity(intent);

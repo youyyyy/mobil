@@ -11,7 +11,7 @@
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:textSize="24dp"
-        android:text="修改昵称" />
+        android:text="修改兴趣标签" />
 
     <com.zhy.view.flowlayout.TagFlowLayout
         android:id="@+id/type_flowlayout"
