@@ -192,6 +192,9 @@ public class MainActivity extends AppCompatActivity
             startActivity(tempIntent);
             // Handle the camera action
         } else if (id == R.id.nav_message) {
+            Intent tempIntent = new Intent(MainActivity.this, SelfDiscussActivity.class);
+            tempIntent.putExtra("self_uid", getUid(this));
+            startActivity(tempIntent);
 
         } else if(id==R.id.nav_recommend){
             Intent tempIntent = new Intent(MainActivity.this, SelfObjectActivity.class);

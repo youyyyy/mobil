@@ -20,6 +20,9 @@ import java.util.List;
 public class SelfObjectAdapter extends RecyclerView.Adapter<SelfObjectAdapter.ViewHolder>{
     private List<FJList> mObjectList;
 
+    private int position;
+    private int id;
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         View objectView;
         ImageView objectImage;
@@ -45,9 +48,9 @@ public class SelfObjectAdapter extends RecyclerView.Adapter<SelfObjectAdapter.Vi
         holder.objectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = holder.getAdapterPosition();
+                position = holder.getAdapterPosition();
                 FJList object = mObjectList.get(position);
-                int id = (object.getId());
+                id = (object.getId());
                 Intent intent = new Intent(view.getContext(), DetailsActivity.class);
                 intent.putExtra("fj_id", id);
 
@@ -67,9 +70,9 @@ public class SelfObjectAdapter extends RecyclerView.Adapter<SelfObjectAdapter.Vi
         holder.objectName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = holder.getAdapterPosition();
+                position = holder.getAdapterPosition();
                 FJList object = mObjectList.get(position);
-                int id = (object.getId());
+                id = (object.getId());
                 Intent intent = new Intent(view.getContext(), DetailsActivity.class);
                 intent.putExtra("fj_id", id);
 

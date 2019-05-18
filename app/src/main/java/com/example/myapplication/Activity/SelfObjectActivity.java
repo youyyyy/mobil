@@ -1,7 +1,6 @@
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -22,7 +21,6 @@ import com.example.myapplication.Bean.User;
 import com.example.myapplication.Bean.UserDiscussBean;
 import com.example.myapplication.R;
 import com.example.myapplication.Util.GsonUtil;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -175,11 +173,11 @@ public class SelfObjectActivity extends AppCompatActivity {
                 //TODO
                 //保存这个list到本地
                 // SharedPreferences sp = mBaseActivity.getSharedPreferences("getNewList", MODE_PRIVATE);//创建sp对象
-                Gson gson = new Gson();
-                String jsonStr=gson.toJson(fjLists); //将List转换成Json
-                SharedPreferences.Editor editor =  getSharedPreferences("spNewList",MODE_PRIVATE).edit();
-                editor.putString("KEY_getNewList", jsonStr) ; //存入json串
-                editor.commit() ;  //提交
+//                Gson gson = new Gson();
+//                String jsonStr=gson.toJson(fjLists); //将List转换成Json
+//                SharedPreferences.Editor editor =  getSharedPreferences("spNewList",MODE_PRIVATE).edit();
+//                editor.putString("KEY_getNewList", jsonStr) ; //存入json串
+//                editor.commit() ;  //提交
 
                 runOnUiThread(new Runnable() {
                     @Override

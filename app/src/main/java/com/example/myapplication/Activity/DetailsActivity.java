@@ -68,6 +68,7 @@ public class DetailsActivity extends Activity {
 //    private Button deliveryButton;
     private ImageView parentImage;
     private CardView cardView2;
+    private TextView fjText;
 
     private String userTrueName;
     //private TextView userNameText;
@@ -97,7 +98,7 @@ public class DetailsActivity extends Activity {
         fjId = intent.getIntExtra("fj_id", 0);
         byte[] bitMapByte = intent.getByteArrayExtra("bitmap");
         bitmap = BitmapFactory.decodeByteArray(bitMapByte, 0, bitMapByte.length);
-        fjName = intent.getStringExtra("fj_name");
+        //fjName = intent.getStringExtra("fj_name");
 
 
         new Thread(new Runnable() {
@@ -200,7 +201,7 @@ public class DetailsActivity extends Activity {
         headView = getLayoutInflater().inflate(R.layout.details_header, recyclerView, false);
         ImageView headreImageView = headView.findViewById(R.id.imageView2);
         headreImageView.setImageBitmap(bitmap);
-        TextView fjText = headView.findViewById(R.id.fjtitle);
+        fjText = headView.findViewById(R.id.fjtitle);
         companyText=headView.findViewById(R.id.company);
         regionText=headView.findViewById(R.id.region);
         actorText=headView.findViewById(R.id.actor);
@@ -214,7 +215,7 @@ public class DetailsActivity extends Activity {
         cardView2=headView.findViewById(R.id.cardview2);
         parentImage=headView.findViewById(R.id.imageView2);
 
-        fjText.setText(fjName);
+        //fjText.setText(fjName);
         Log.d("myapplog", "Title: " + fjName);
         adapter.setParallaxHeader(headView, recyclerView);
         adapter.setData(content);
@@ -286,6 +287,7 @@ public class DetailsActivity extends Activity {
         public void handleMessage(Message msg) {
             switch(msg.what){
                 case 200: {
+                   fjText.setText(fobject.getTitle());
                     if(fobject.getCompany().equals("null"))
                         companyText.setText("制作公司："+"暂无数据~");
                     else
