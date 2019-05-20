@@ -8,7 +8,7 @@ public class MusicBean implements Serializable {
 
     private String message;
 
-    private Fobject data;
+    private Music data;
 
     private Date time;
 
@@ -26,10 +26,10 @@ public class MusicBean implements Serializable {
         this.message=message;
     }
 
-    public Fobject getData(){
+    public Music getData(){
         return data;
     }
-    public void setData(Fobject data){
+    public void setData(Music data){
         this.data=data;
     }
 

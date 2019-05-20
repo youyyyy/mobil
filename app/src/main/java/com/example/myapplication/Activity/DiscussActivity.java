@@ -9,12 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.Discuss;
+import com.example.myapplication.Bean.Music;
+import com.example.myapplication.Bean.MusicBean;
 import com.example.myapplication.Bean.User;
 import com.example.myapplication.Bean.UserDiscussBean;
 import com.example.myapplication.R;
@@ -42,6 +45,7 @@ public class DiscussActivity extends AppCompatActivity {
     private OkHttpClient client = new OkHttpClient();
 
     private User user;
+    private Music music;
 
     private int fId;
     private String userId;
@@ -51,6 +55,10 @@ public class DiscussActivity extends AppCompatActivity {
     EditText eDiscussText;
     @BindView(R.id.send_discuss)
     Button sDiscussButton;
+    @BindView(R.id.music_name)
+    TextView musicNameText;
+    @BindView(R.id.music_singer)
+    TextView musicSingerText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +76,7 @@ public class DiscussActivity extends AppCompatActivity {
                 send();
             }
         });
+        getData3();
         getData2();
     }
 
@@ -80,6 +89,11 @@ public class DiscussActivity extends AppCompatActivity {
             switch(msg.what){
                 case 200: {
                     userName=user.getUsername();
+                }
+                case 300: {
+                    musicNameText.setText(music.getMusicname()+"("+music.getFobjectname()+music.getType()+")");
+                    musicSingerText.setText("歌手："+music.getSinger());
+                    Log.d("myapplog", "signer"+music.getSinger());
                 }
             }
         }
@@ -208,6 +222,38 @@ public class DiscussActivity extends AppCompatActivity {
             }
         });
         return user;
+    }
+
+    private Music getData3(){
+        Request request = new Request.Builder()
+                .url(MyApplication.getURL() + "music/fmusic?fobjectid=" + fId)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("myapplog", e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String body = response.body().string();
+                Log.d("myapplog", "body: " + body);
+
+                MusicBean temp = GsonUtil.GsonToBean(body, MusicBean.class);
+                Log.d("myapplog", "Detail:" + temp.getData().toString());
+
+                music = temp.getData();
+                //fobject = GsonUtil.GsonToBean(temp.getData(), Fobject.class);
+                Log.d("myapplog", music.getMusicname());
+                Message msg = new Message();
+                msg.what = 300;
+                //msg.arg1 = 111;  可以设置arg1、arg2、obj等参数，传递这些数据
+                //msg.arg2 = 222; msg.obj = obj;
+                mHandler.sendMessage(msg);
+            }
+        });
+        return music;
     }
 
 
