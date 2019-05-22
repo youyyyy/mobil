@@ -33,7 +33,7 @@ public class GenderEditActivity extends AppCompatActivity {
     private OkHttpClient client = new OkHttpClient();
 
     private String userId;
-    private  int editgender;
+    private int editgender=3;
 
     @BindView(R.id.edit_icon_man)
     ImageView iconMan;
@@ -41,8 +41,7 @@ public class GenderEditActivity extends AppCompatActivity {
     ImageView iconWoman;
     @BindView(R.id.send_genderedit)
     Button genderEditButton;
-    @BindView(R.id.edit_icon_no)
-    ImageView iconNo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +63,10 @@ public class GenderEditActivity extends AppCompatActivity {
         iconMan.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                iconMan.setImageResource(R.drawable.ic_launcher_background);
-                iconWoman.setImageResource(R.drawable.ic_launcher_foreground);
+                iconMan.setImageResource(R.drawable.ic_man);
+                iconWoman.setImageResource(R.drawable.ic_woman_select);
                 manSelected = true;
                 womanSelected = false;
-                noSelected=false;
                 editgender=1;
             }
         });
@@ -76,28 +74,15 @@ public class GenderEditActivity extends AppCompatActivity {
         iconWoman.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                iconMan.setImageResource(R.drawable.ic_launcher_foreground);
-                iconWoman.setImageResource(R.drawable.ic_launcher_background);
-                iconNo.setImageResource(R.drawable.ic_launcher_background);
+                iconMan.setImageResource(R.drawable.ic_man_select);
+                iconWoman.setImageResource(R.drawable.ic_woman);
                 manSelected = false;
                 womanSelected = true;
-                noSelected=false;
                 editgender=2;
             }
         });
 
-        iconNo.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                iconMan.setImageResource(R.drawable.ic_launcher_foreground);
-                iconWoman.setImageResource(R.drawable.ic_launcher_background);
-                iconNo.setImageResource(R.drawable.ic_launcher_background);
-                manSelected = false;
-                womanSelected = false;
-                noSelected=true;
-                editgender=3;
-            }
-        });
+
 
     }
 

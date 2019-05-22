@@ -41,7 +41,7 @@ public class RegistActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private  LayoutInflater mInflater;
     private String[] labels;
-    private int gender;
+    private int gender=3;
 
 
 //    @BindView(R.id.genderview)
@@ -96,8 +96,8 @@ public class RegistActivity extends AppCompatActivity {
         _iconMan.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                _iconMan.setImageResource(R.drawable.ic_launcher_background);
-                _iconWoman.setImageResource(R.drawable.ic_launcher_foreground);
+                _iconMan.setImageResource(R.drawable.ic_man);
+                _iconWoman.setImageResource(R.drawable.ic_woman_select);
                 manSelected = true;
                 womanSelected = false;
                 gender=1;
@@ -107,8 +107,8 @@ public class RegistActivity extends AppCompatActivity {
         _iconWoman.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                _iconMan.setImageResource(R.drawable.ic_launcher_foreground);
-                _iconWoman.setImageResource(R.drawable.ic_launcher_background);
+                _iconMan.setImageResource(R.drawable.ic_man_select);
+                _iconWoman.setImageResource(R.drawable.ic_woman);
                 manSelected = false;
                 womanSelected = true;
                 gender=2;
@@ -164,6 +164,7 @@ public class RegistActivity extends AppCompatActivity {
 
         client = new OkHttpClient.Builder()
                 .build();
+
 
 
 

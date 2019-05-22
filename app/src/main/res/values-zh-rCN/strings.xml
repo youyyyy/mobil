@@ -42,4 +42,6 @@
     <string name="All">所有新番</string>
     <string name="nameedit">修改成功</string>
     <string name="donghua">正在操作中哟~</string>
+    <string name="client">请检查网络哟~</string>
+    <string name="client1">网络连接正常</string>
 </resources>

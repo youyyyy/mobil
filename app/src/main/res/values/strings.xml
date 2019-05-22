@@ -69,4 +69,7 @@
     <string name="cedit">edit success</string>
     <string name="nameedit">edit success</string>
 
+    <!-- 网络提示-->
+    <string name="client">client fails</string>
+    <string name="client1">client normal</string>
 </resources>

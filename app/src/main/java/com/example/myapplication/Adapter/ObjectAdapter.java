@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Activity.DetailsActivity;
@@ -24,12 +25,14 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
         View objectView;
         ImageView objectImage;
         TextView objectName;
+        CardView objectNameCard;
 
         public ViewHolder(View view) {
             super(view);
             objectView=view;
             objectImage = (ImageView) view.findViewById(R.id.object_image);
             objectName = (TextView) view.findViewById(R.id.object_text);
+            objectNameCard = (CardView) view.findViewById(R.id.cardview_item);
         }
     }
 
@@ -64,7 +67,7 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
                 //Object object = mObjectList.get(position);
             }
         });
-        holder.objectName.setOnClickListener(new View.OnClickListener() {
+        holder.objectNameCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();

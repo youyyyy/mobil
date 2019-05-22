@@ -28,7 +28,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="93dp"
-            android:src="@drawable/ic_menu_camera" />
+            android:src="@drawable/ic_man_select" />
 
         <ImageView
             android:id="@+id/edit_icon_woman"
@@ -36,17 +36,9 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="92dp"
-            android:src="@drawable/ic_menu_camera" />
+            android:layout_marginEnd="93dp"
+            android:src="@drawable/ic_woman_select" />
 
-        <ImageView
-            android:id="@+id/edit_icon_no"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="190dp"
-            android:src="@drawable/ic_menu_camera" />
 
     </RelativeLayout>
 

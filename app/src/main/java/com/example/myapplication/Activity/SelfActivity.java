@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.User;
@@ -59,6 +60,12 @@ public class SelfActivity extends AppCompatActivity {
     TextView editType;
     @BindView(R.id.self_edit_gender)
     TextView editGender;
+    @BindView(R.id.self_name_card)
+    CardView nameCard;
+    @BindView(R.id.self_gender_card)
+    CardView genderCard;
+    @BindView(R.id.self_type_card)
+    CardView typeCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +87,7 @@ public class SelfActivity extends AppCompatActivity {
             }
         });
 
-        editName.setOnClickListener(new View.OnClickListener() {
+        nameCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SelfActivity.this, NameEditActivity.class);
@@ -91,7 +98,7 @@ public class SelfActivity extends AppCompatActivity {
             }
         });
 
-        editType.setOnClickListener(new View.OnClickListener() {
+        typeCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SelfActivity.this, TypeEditActivity.class);
@@ -102,7 +109,7 @@ public class SelfActivity extends AppCompatActivity {
             }
         });
 
-        editGender.setOnClickListener(new View.OnClickListener() {
+        genderCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SelfActivity.this, GenderEditActivity.class);
