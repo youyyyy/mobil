@@ -17,6 +17,7 @@ import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.normalReturnBean;
 import com.example.myapplication.R;
 import com.example.myapplication.Util.GsonUtil;
+import com.example.myapplication.Util.MD5Util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -146,7 +147,8 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         String username = phoneNumdText.getText().toString();
-        String password = passWordText.getText().toString();
+        String password1 = passWordText.getText().toString();
+        String password= MD5Util.md5Password(password1);
 
         Request request = new Request.Builder()
                 .url(MyApplication.getURL() + "user/login?phonenum=" + username + "&password=" + password)

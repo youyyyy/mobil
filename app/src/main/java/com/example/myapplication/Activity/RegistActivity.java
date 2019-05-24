@@ -18,6 +18,7 @@ import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.User;
 import com.example.myapplication.R;
 import com.example.myapplication.Util.GsonUtil;
+import com.example.myapplication.Util.MD5Util;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -169,7 +170,8 @@ public class RegistActivity extends AppCompatActivity {
 
 
         String username=nameText.getText().toString();
-        String password=passwordText.getText().toString();
+        String password1=passwordText.getText().toString();
+        String password= MD5Util.md5Password(password1);
         String reEnterPassword=reEnterPasswordText.getText().toString();
         String phoneNum=phoneNumText.getText().toString();
         String email=emailText.getText().toString();

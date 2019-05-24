@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -66,6 +67,8 @@ public class SelfActivity extends AppCompatActivity {
     CardView genderCard;
     @BindView(R.id.self_type_card)
     CardView typeCard;
+    @BindView(R.id.self_cancel)
+    ImageView cancelImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,14 +123,25 @@ public class SelfActivity extends AppCompatActivity {
             }
         });
 
+        cancelImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor sharedPreferences = getSharedPreferences("cookies", MODE_PRIVATE).edit();
+                Long date =System.currentTimeMillis() ;
+                sharedPreferences.putLong("expires", date);
+                sharedPreferences.apply();
+                Intent intent=new Intent(SelfActivity.this,SplashActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+               // startActivity(new Intent(SelfActivity.this, LoginActivity.class));
+            }
+        });
+
         getData();
+
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        onCreate(null);
-//    }
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
