@@ -166,9 +166,6 @@ public class RegistActivity extends AppCompatActivity {
         client = new OkHttpClient.Builder()
                 .build();
 
-
-
-
         String username=nameText.getText().toString();
         String password1=passwordText.getText().toString();
         String password= MD5Util.md5Password(password1);

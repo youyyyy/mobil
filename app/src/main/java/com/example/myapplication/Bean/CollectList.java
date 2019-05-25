@@ -4,20 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class DiscussList implements Serializable {
+public class CollectList implements Serializable {
     private int code;
 
-    private List<DiscussReturn> data;
+    private List<Collect> data;
 
     private Date time;
 
     //public void Fobject() { }
 
-    public void setData(List<DiscussReturn> data) {
+    public void setData(List<Collect> data) {
         this.data = data;
     }
 
-    public List<DiscussReturn> getData() {
+    public List<Collect> getData() {
         return data;
     }
 

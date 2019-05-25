@@ -199,7 +199,11 @@ public class MainActivity extends AppCompatActivity
         } else if(id==R.id.nav_recommend){
             Intent tempIntent = new Intent(MainActivity.this, SelfObjectActivity.class);
             tempIntent.putExtra("self_uid", getUid(this));
+            startActivity(tempIntent);
 
+        }else if(id==R.id.nav_collect){
+            Intent tempIntent = new Intent(MainActivity.this, CollectActivity.class);
+            tempIntent.putExtra("self_uid", getUid(this));
             startActivity(tempIntent);
 
         }else if (id == R.id.nav_Monday) {

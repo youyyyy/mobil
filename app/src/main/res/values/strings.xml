@@ -17,6 +17,7 @@
     <!--<string name="menu_tools">Tools</string>-->
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="menu_collect">self collect</string>
 
     <!-- Strings related to login -->
     <string name="password_err_hint">between 6 and 12 alphanumeric characters</string>
@@ -56,6 +57,7 @@
     <string name="Sunday">Sunday</string>
     <string name="Finish">Finish</string>
     <string name="All">All</string>
+
     <string name="Developing">Developing...</string>
 
     <!-- user -->
@@ -72,4 +74,8 @@
     <!-- 网络提示-->
     <string name="client">client fails</string>
     <string name="client1">client normal</string>
+
+    <!-- 收藏-->
+    <string name="collectsuccess">collect success</string>
+    <string name="deletecollect">delete success</string>
 </resources>

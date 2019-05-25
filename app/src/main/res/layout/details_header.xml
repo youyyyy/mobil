@@ -136,6 +136,15 @@
                 android:layout_below="@id/updatetime"
                 android:textSize="10dp"
                 android:text="发表评论"/>
+
+            <ImageView
+                android:id="@+id/collect"
+                android:layout_marginTop="10dp"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/updatetime"
+                android:src="@drawable/ic_menu_camera"
+                android:textSize="10dp" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 

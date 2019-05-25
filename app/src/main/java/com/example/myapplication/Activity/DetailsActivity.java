@@ -1,6 +1,7 @@
 package com.example.myapplication.Activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Application.MyApplication;
+import com.example.myapplication.Bean.Collect;
 import com.example.myapplication.Bean.DiscussList;
 import com.example.myapplication.Bean.DiscussReturn;
 import com.example.myapplication.Bean.FjDetailBean;
@@ -41,7 +43,10 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+
+import static com.example.myapplication.Activity.RegistActivity.JSON;
 
 
 /*
@@ -69,6 +74,7 @@ public class DetailsActivity extends Activity {
     private ImageView parentImage;
     private CardView cardView2;
     private TextView fjText;
+    private ImageView collectImage;
 
     private String userTrueName;
     //private TextView userNameText;
@@ -214,6 +220,7 @@ public class DetailsActivity extends Activity {
 //        deliveryButton=headView.findViewById(R.id.delivery);
         cardView2=headView.findViewById(R.id.cardview2);
         parentImage=headView.findViewById(R.id.imageView2);
+        collectImage=headView.findViewById(R.id.collect);
 
         //fjText.setText(fjName);
         Log.d("myapplog", "Title: " + fjName);
@@ -236,6 +243,7 @@ public class DetailsActivity extends Activity {
             }
         });
 
+
 //        deliveryButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -255,6 +263,13 @@ public class DetailsActivity extends Activity {
                 intent.putExtra("del_fjId",fId);
                 startActivity(intent);
                 //startActivity(new Intent(DetailsActivity.this, DiscussActivity.class));
+            }
+        });
+
+        collectImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                collect();
             }
         });
 
@@ -374,7 +389,6 @@ public class DetailsActivity extends Activity {
     }
 
 
-
     /*
     * 获取本番剧的评论信息
     * */
@@ -394,6 +408,78 @@ public class DetailsActivity extends Activity {
             e.printStackTrace();
         }
         return discusses;
+    }
+
+    public void collect() {
+
+        final ProgressDialog progressDialog = new ProgressDialog(DetailsActivity.this,
+                R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Creating Account...");
+        progressDialog.show();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    sendCollect(progressDialog);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public void sendCollect(ProgressDialog progressDialog) throws Exception{
+        client = new OkHttpClient.Builder()
+                .build();
+
+
+        String cuid=getPreference(this,"id");
+        int cuId=Integer.valueOf(cuid);
+        int cfId=fobject.getId();
+        int cUpdatetime=fobject.getUpdatetime();
+        String cFname=fobject.getTitle();
+
+        Collect collect=new Collect();
+        collect.setUserid(cuId);
+        collect.setFjid(cfId);
+        collect.setUpdatetime(cUpdatetime);
+        collect.setFjname(cFname);
+
+
+
+
+        String collectJson = GsonUtil.GsonString(collect);
+
+        RequestBody requestBody = RequestBody.create(JSON, collectJson);
+
+        Request request = new Request.Builder()
+                .url(MyApplication.getURL() +"collect/add")
+                .method("POST", requestBody)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("myapplog", e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String body = response.body().string();
+                Log.d("myapplog", "hahah:" + body);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.cancel();
+                        Toast.makeText(DetailsActivity.this, getText(R.string.collectsuccess), Toast.LENGTH_LONG).show();
+                    }
+                });
+//                startActivity(new Intent(RegistActivity.this, LoginActivity.class));
+            }
+        });
+
     }
 
     public static String getPreference(Context context, String key) {

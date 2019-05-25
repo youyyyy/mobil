@@ -44,4 +44,8 @@
     <string name="donghua">正在操作中哟~</string>
     <string name="client">请检查网络哟~</string>
     <string name="client1">网络连接正常</string>
+    <string name="collectsuccess">收藏成功</string>
+    <string name="Collect">个人收藏</string>
+    <string name="menu_collect">个人收藏</string>
+    <string name="deletecollect">取消收藏</string>
 </resources>

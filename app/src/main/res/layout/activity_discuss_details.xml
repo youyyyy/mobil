@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="24dp"
             android:gravity="center"
-            android:text="所评论番剧"/>
+            android:text="番剧"/>
         <TextView
             android:id="@+id/discuss_fjtitle"
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
           <ImageView
               android:id="@+id/discuss_fjimage"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
+              android:layout_height="250dp"
               android:layout_below="@+id/discuss_fjtitle"
               android:layout_marginTop="20dp"/>
       </RelativeLayout>
