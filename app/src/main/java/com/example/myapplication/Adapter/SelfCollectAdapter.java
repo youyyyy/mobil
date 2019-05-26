@@ -83,7 +83,6 @@ public class SelfCollectAdapter extends RecyclerView.Adapter<SelfCollectAdapter.
                 Toast.makeText(parent.getContext(),parent.getContext().getText(R.string.deletecollect), Toast.LENGTH_LONG).show();
             }
         });
-
         return holder;
     }
 
