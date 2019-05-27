@@ -7,16 +7,22 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.Discuss;
 import com.example.myapplication.Bean.Music;
+import com.example.myapplication.Bean.MusicAPI;
+import com.example.myapplication.Bean.MusicAPIBean;
 import com.example.myapplication.Bean.MusicBean;
 import com.example.myapplication.Bean.User;
 import com.example.myapplication.Bean.UserDiscussBean;
@@ -46,10 +52,13 @@ public class DiscussActivity extends AppCompatActivity {
 
     private User user;
     private Music music;
+    private MusicAPI musicAPI;
 
     private int fId;
     private String userId;
     private String userName;
+    private String fjName;
+    private String musicURL = "";
 
     @BindView(R.id.edit_discuss)
     EditText eDiscussText;
@@ -59,6 +68,10 @@ public class DiscussActivity extends AppCompatActivity {
     TextView musicNameText;
     @BindView(R.id.music_singer)
     TextView musicSingerText;
+    @BindView(R.id.music_card)
+    CardView musicCard;
+    @BindView(R.id.music_web)
+    WebView musicWeb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +82,9 @@ public class DiscussActivity extends AppCompatActivity {
         fId=intent.getIntExtra("dis_fjId",0);
         userId=intent.getStringExtra("dis_userid");
 
+        musicWeb.setWebChromeClient(new WebChromeClient());
+        musicWeb.setWebViewClient(new WebViewClient());
+        musicWeb.getSettings().setJavaScriptEnabled(true);
 
         sDiscussButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +92,17 @@ public class DiscussActivity extends AppCompatActivity {
                 send();
             }
         });
-        getData3();
-        getData2();
+
+        musicCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!musicURL.isEmpty()) {
+                    music();
+                }
+            }
+        });
+        getMusicData3();
+        getUserData2();
     }
 
 
@@ -93,11 +118,19 @@ public class DiscussActivity extends AppCompatActivity {
                 case 300: {
                     musicNameText.setText(music.getMusicname()+"("+music.getFobjectname()+music.getType()+")");
                     musicSingerText.setText("歌手："+music.getSinger());
-                    Log.d("myapplog", "signer"+music.getSinger());
+                    fjName=music.getFobjectname();
+                    getAPIData4();
+                    Log.d("myapplog", "fjname"+music.getFobjectname());
+                }
+                case 400:{
+                    musicURL = (String) msg.obj;
                 }
             }
         }
     };
+    public void music(){
+        musicWeb.loadUrl(musicURL);
+    }
 
     /*
     * 实现评论的写入与发送
@@ -193,7 +226,7 @@ public class DiscussActivity extends AppCompatActivity {
     /*
     * 搜索用户的资料
     * */
-    private User getData2(){
+    private User getUserData2(){
         Request request = new Request.Builder()
                 .url(MyApplication.getURL() + "user/showuser?id=" + userId)
                 .build();
@@ -224,7 +257,10 @@ public class DiscussActivity extends AppCompatActivity {
         return user;
     }
 
-    private Music getData3(){
+    /*
+    * 获取音乐信息
+    * */
+    private Music getMusicData3(){
         Request request = new Request.Builder()
                 .url(MyApplication.getURL() + "music/fmusic?fobjectid=" + fId)
                 .build();
@@ -255,6 +291,45 @@ public class DiscussActivity extends AppCompatActivity {
         });
         return music;
     }
+
+    /*
+     * 获取音乐接口
+     * */
+    private void getAPIData4(){
+        Request request = new Request.Builder()
+                .url("https://api.itooi.cn/music/netease/search?key=579621905&s="+fjName+"&type=song&limit=1")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("myapplog", e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String body = response.body().string();
+                Log.d("myapplog", "body: " + body);
+
+                MusicAPIBean temp = GsonUtil.GsonToBean(body, MusicAPIBean.class);
+               // Log.d("myapplog", "Detail:" + temp.getData().toString());
+
+                musicAPI = temp.getData();
+                Log.d("myapplog", "Detail:" + musicAPI.getName().toString());
+                //fobject = GsonUtil.GsonToBean(temp.getData(), Fobject.class);
+                Log.d("myapplog", musicAPI.getUrl());
+                Message msg = new Message();
+                msg.what = 400;
+                msg.obj = musicAPI.getUrl();
+                //msg.arg1 = 111;  可以设置arg1、arg2、obj等参数，传递这些数据
+                //msg.arg2 = 222; msg.obj = obj;
+                mHandler.sendMessage(msg);
+            }
+        });
+
+    }
+
+
 
 
     /*

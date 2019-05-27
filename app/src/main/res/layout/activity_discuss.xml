@@ -64,7 +64,18 @@
                 android:text="歌手"
                 />
         </RelativeLayout>
+
+
     </androidx.cardview.widget.CardView>
+
+    <WebView
+        android:id="@+id/music_web"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/music_card"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+    </WebView>
 
 
 
