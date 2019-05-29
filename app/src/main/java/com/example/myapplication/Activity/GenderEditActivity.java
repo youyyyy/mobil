@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ public class GenderEditActivity extends AppCompatActivity {
     @BindView(R.id.edit_icon_woman)
     ImageView iconWoman;
     @BindView(R.id.send_genderedit)
-    Button genderEditButton;
+    ImageView genderEditButton;
 
 
     @Override

@@ -30,7 +30,7 @@
             android:text="@string/ID"
             android:layout_below="@id/self_sculpture"
             android:textIsSelectable="true"
-            android:textSize="15dp"
+            android:textSize="10dp"
             android:layout_marginTop="5dp"
             />
 
@@ -44,7 +44,7 @@
         android:textColor="@color/black"
         android:textIsSelectable="true"
         android:layout_toRightOf="@id/self_id"
-        android:textSize="15dp" />
+        android:textSize="10dp" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/self_cardview1"
@@ -68,15 +68,13 @@
         />
     </com.google.android.material.card.MaterialCardView>
 
-    <TextView
+    <ImageView
         android:id="@+id/self_edit_csignature"
         android:layout_width="wrap_content"
         android:layout_height="85dp"
-        android:textColor="@color/black"
-        android:text="编辑>"
         android:layout_below="@id/self_head_pic"
+        android:src="@drawable/ic_menu_camera"
         android:textIsSelectable="true"
-        android:textSize="20dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         />
@@ -85,7 +83,7 @@
         android:id="@+id/self_name_card"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/self_id"
         app:cardCornerRadius="10dp"
@@ -93,26 +91,24 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/self_name"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="昵称"
-        android:textIsSelectable="true"
-        android:textSize="20dp"
 
-        />
-    <TextView
-        android:id="@+id/self_edit_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="编辑>"
-        android:textIsSelectable="true"
-        android:textSize="20dp"
-        android:layout_alignParentEnd="true"
-        />
+            <TextView
+                android:id="@+id/self_name"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="昵称"
+                android:textColor="@color/black"
+                android:textIsSelectable="true" />
+
+            <ImageView
+                android:id="@+id/self_edit_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/self_edit_type"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="77dp"
+                android:src="@drawable/ic_menu_camera"
+                android:textIsSelectable="true" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -121,7 +117,7 @@
         android:id="@+id/self_gender_card"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/self_name_card"
         app:cardCornerRadius="10dp"
@@ -136,19 +132,19 @@
         android:textColor="@color/black"
         android:text="性别"
         android:textIsSelectable="true"
-        android:textSize="20dp"
         />
 
-    <TextView
-        android:id="@+id/self_edit_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="编辑>"
-        android:textIsSelectable="true"
-        android:textSize="20dp"
-        android:layout_alignParentEnd="true"
-        />
+            <ImageView
+                android:id="@+id/self_edit_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:src="@drawable/ic_menu_camera"
+                android:textIsSelectable="true" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -157,7 +153,7 @@
         android:id="@+id/self_type_card"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/self_gender_card"
         app:cardCornerRadius="10dp"
@@ -172,19 +168,17 @@
         android:textColor="@color/black"
         android:text="喜好"
         android:textIsSelectable="true"
-        android:textSize="20dp"
         />
 
-    <TextView
-        android:id="@+id/self_edit_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="编辑>"
-        android:textIsSelectable="true"
-        android:textSize="20dp"
-        android:layout_alignParentEnd="true"
-        />
+            <ImageView
+                android:id="@+id/self_edit_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_menu_camera"
+                android:textIsSelectable="true" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 

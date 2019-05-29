@@ -13,7 +13,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,7 +68,7 @@ public class DetailsActivity extends Activity {
     private TextView typeText;
     private TextView timeText;
     private TextView updateTimeText;
-    private Button disButton;
+    private ImageView disButton;
 //    private Button deliveryButton;
     private ImageView parentImage;
     private CardView cardView2;

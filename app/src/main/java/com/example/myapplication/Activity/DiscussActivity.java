@@ -10,8 +10,8 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,7 +63,7 @@ public class DiscussActivity extends AppCompatActivity {
     @BindView(R.id.edit_discuss)
     EditText eDiscussText;
     @BindView(R.id.send_discuss)
-    Button sDiscussButton;
+    ImageView sDiscussButton;
     @BindView(R.id.music_name)
     TextView musicNameText;
     @BindView(R.id.music_singer)

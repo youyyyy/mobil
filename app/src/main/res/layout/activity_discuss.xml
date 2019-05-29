@@ -21,11 +21,12 @@
         android:scrollbars="vertical"
         android:inputType="textMultiLine"
         android:hint="请说点什么吧~"/>
-    <Button
+    <ImageView
         android:id="@+id/send_discuss"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/edit_discuss"
+        android:src="@drawable/ic_menu_camera"
         android:layout_alignParentEnd="true"
         android:text="发表"/>
 

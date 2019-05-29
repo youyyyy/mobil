@@ -43,11 +43,12 @@
     </RelativeLayout>
 
 
-    <Button
+    <ImageView
         android:id="@+id/send_genderedit"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/togender"
+        android:src="@drawable/ic_menu_camera"
         android:layout_alignParentEnd="true"
         android:text="保存"/>
 

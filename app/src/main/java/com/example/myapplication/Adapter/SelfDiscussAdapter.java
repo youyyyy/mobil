@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +42,7 @@ public class SelfDiscussAdapter extends RecyclerView.Adapter<SelfDiscussAdapter.
         View objectView;
         TextView disBody;
         TextView disTime;
-        TextView disDelete;
+        ImageView disDelete;
 
 
         public ViewHolder(View view) {
@@ -49,7 +50,7 @@ public class SelfDiscussAdapter extends RecyclerView.Adapter<SelfDiscussAdapter.
             objectView = view;
             disBody = (TextView) view.findViewById(R.id.self_dicuss_body);
             disTime = (TextView) view.findViewById(R.id.self_dicuss_time);
-            disDelete = (TextView) view.findViewById(R.id.self_discuss_delete);
+            disDelete = (ImageView) view.findViewById(R.id.self_discuss_delete);
         }
     }
 

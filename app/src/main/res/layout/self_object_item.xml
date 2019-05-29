@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="190dp">
 
 
     <!--<com.google.android.material.card.MaterialCardView-->
@@ -32,12 +32,13 @@
 
     <TextView
         android:id="@+id/self_object_name"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sef_object_cardview"
         android:layout_gravity="center_vertical"
         android:gravity="center"
         android:layout_marginTop="10dp" />
+
 
 
     <!--</com.google.android.material.card.MaterialCardView>-->

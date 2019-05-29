@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +37,7 @@ public class TypeEditActivity extends AppCompatActivity {
     private LayoutInflater mInflater;
 
     @BindView(R.id.send_typeedit)
-    Button typeEditButton;
+    ImageView typeEditButton;
     @BindView(R.id.type_flowlayout)
     TagFlowLayout typeFlowLayout;
 
@@ -63,7 +63,7 @@ public class TypeEditActivity extends AppCompatActivity {
 
     private String[] initLabel() {
         String[] mVals = new String[]
-                {"搞笑", "动作", "热血", "青春", "恐怖", "恋爱", "乙女", "励志", "冒险", "奇幻", "轻小说", "励志", "科幻", "泡面番", "运动", "百合", "科幻", "耽美"};
+                {"搞笑", "动作", "热血", "青春", "恐怖", "恋爱", "乙女", "励志", "冒险", "奇幻", "轻小说", "励志" , "泡面番", "运动", "百合", "科幻", "耽美"};
         typeFlowLayout.setMaxSelectCount(3);
         typeFlowLayout.setAdapter(new TagAdapter<String>(mVals) {
             @Override

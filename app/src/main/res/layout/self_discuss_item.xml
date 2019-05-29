@@ -22,16 +22,14 @@
                 android:singleLine="false"
                 android:layout_marginLeft="10dp"
                 android:text="body"/>
-            <TextView
+            <ImageView
                 android:layout_marginTop="0dp"
                 android:id="@+id/self_discuss_delete"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_alignParentEnd="true"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                android:text="删除" />
+                android:src="@drawable/ic_menu_camera"
+                android:layout_alignParentEnd="true" />
 
             <TextView
                 android:id="@+id/self_dicuss_time"

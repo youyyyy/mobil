@@ -54,13 +54,13 @@ public class SelfActivity extends AppCompatActivity {
     @BindView(R.id.self_email)
     TextView emailText;
     @BindView(R.id.self_edit_csignature)
-    TextView edtiCsignature;
+    ImageView edtiCsignature;
     @BindView(R.id.self_edit_name)
-    TextView editName;
+    ImageView editName;
     @BindView(R.id.self_edit_type)
-    TextView editType;
+    ImageView editType;
     @BindView(R.id.self_edit_gender)
-    TextView editGender;
+    ImageView editGender;
     @BindView(R.id.self_name_card)
     CardView nameCard;
     @BindView(R.id.self_gender_card)
