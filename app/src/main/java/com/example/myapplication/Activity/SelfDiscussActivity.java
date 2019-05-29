@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -34,12 +35,16 @@ public class SelfDiscussActivity extends AppCompatActivity {
     private List<DiscussReturn> selfDis=new ArrayList<>();
     private SelfDiscussAdapter selfDiscussAdapter;
 
+    @BindView(R.id.my_dis)
+    androidx.constraintlayout.widget.ConstraintLayout myDis;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_self_discuss);
 
         ButterKnife.bind(SelfDiscussActivity.this);
+        myDis.setBackground(getDrawable(R.drawable.my_dis));
         Intent intent = getIntent();
         selfId=intent.getStringExtra("self_uid");
         Log.d("myapplog", "getid:"+selfId);

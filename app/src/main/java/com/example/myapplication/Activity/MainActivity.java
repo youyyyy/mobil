@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -27,9 +26,7 @@ import com.example.myapplication.Bean.Fobject;
 import com.example.myapplication.Bean.FobjectList;
 import com.example.myapplication.R;
 import com.example.myapplication.Util.GsonUtil;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,6 +58,8 @@ public class MainActivity extends AppCompatActivity
     private ObjectAdapter objectAdapter;
     private String userType;
 
+    androidx.constraintlayout.widget.ConstraintLayout mainCons;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,19 +67,21 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+       // FloatingActionButton fab = findViewById(R.id.fab);
+        mainCons=findViewById(R.id.main_constrain);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
 //        xixi = findViewById(R.id.xixi);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -210,46 +211,55 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "2";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_week1));
 
         } else if (id == R.id.nav_Tuesday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "3";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_week2));
 
         } else if (id == R.id.nav_Wednesday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "4";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_week3));
 
         } else if (id == R.id.nav_Thursday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "5";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_week4));
 
         }else if (id == R.id.nav_Friday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "6";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_week5));
 
         }else if (id == R.id.nav_Saturday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "7";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_week6));
 
         }else if (id == R.id.nav_Sunday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "1";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_week7));
         }
         else if (id == R.id.nav_Finish) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "0";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_finish));
         }
         else if (id == R.id.nav_All) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "8";
             updateData();
+            mainCons.setBackground(getDrawable(R.drawable.bak_all));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

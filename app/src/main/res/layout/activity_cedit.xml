@@ -24,9 +24,9 @@
     <ImageView
         android:id="@+id/send_cedit"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_below="@id/cedit_csignature"
-        android:src="@drawable/ic_menu_camera"
+        android:src="@drawable/ic_edit1"
         android:layout_alignParentEnd="true"
         android:text="保存"/>
 

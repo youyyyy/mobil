@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -49,11 +50,15 @@ public class SelfObjectActivity extends AppCompatActivity {
     private List<FJList> fjLists = new ArrayList<>();
     private SelfObjectAdapter selfObjectAdapter;
 
+    @BindView(R.id.self_suggest_fj)
+    androidx.constraintlayout.widget.ConstraintLayout selfSuggest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_self_object);
         ButterKnife.bind(SelfObjectActivity.this);
+        selfSuggest.setBackground(getDrawable(R.drawable.self_suggest));
         Intent intent = getIntent();
         selfId=intent.getStringExtra("self_uid");
         Log.d("myapplog", "getid:"+selfId);

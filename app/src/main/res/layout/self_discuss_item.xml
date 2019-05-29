@@ -26,9 +26,9 @@
                 android:layout_marginTop="0dp"
                 android:id="@+id/self_discuss_delete"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_menu_camera"
+                android:src="@drawable/ic_delete"
                 android:layout_alignParentEnd="true" />
 
             <TextView

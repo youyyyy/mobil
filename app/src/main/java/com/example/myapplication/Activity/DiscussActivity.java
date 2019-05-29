@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,12 +73,15 @@ public class DiscussActivity extends AppCompatActivity {
     CardView musicCard;
     @BindView(R.id.music_web)
     WebView musicWeb;
+    @BindView(R.id.send_my_dis)
+    RelativeLayout sendBak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discuss);
         ButterKnife.bind(DiscussActivity.this);
+        sendBak.setBackground(getDrawable(R.drawable.send_dis));
         Intent intent = getIntent();
         fId=intent.getIntExtra("dis_fjId",0);
         userId=intent.getStringExtra("dis_userid");

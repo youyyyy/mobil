@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:id="@+id/send_my_dis"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -24,9 +25,9 @@
     <ImageView
         android:id="@+id/send_discuss"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_below="@id/edit_discuss"
-        android:src="@drawable/ic_menu_camera"
+        android:src="@drawable/ic_edit1"
         android:layout_alignParentEnd="true"
         android:text="发表"/>
 

@@ -2,6 +2,6 @@
     <item android:drawable="@color/splash"/>
     <item>
         <bitmap
-            android:src="@drawable/appsplash1" />
+            android:src="@drawable/appsplash" />
     </item>
 </layer-list>

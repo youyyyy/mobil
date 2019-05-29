@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -34,12 +35,16 @@ public class CollectActivity extends AppCompatActivity {
     private List<Collect> selfCollect=new ArrayList<>();
     private SelfCollectAdapter selfCollectAdapter;
 
+    @BindView(R.id.my_collect)
+    androidx.constraintlayout.widget.ConstraintLayout myCollect;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collect);
 
         ButterKnife.bind(CollectActivity.this);
+        myCollect.setBackground(getDrawable(R.drawable.my_collect));
         Intent intent = getIntent();
         selfId=intent.getStringExtra("self_uid");
         Log.d("myapplog", "getid:"+selfId);

@@ -26,10 +26,10 @@
                 android:layout_marginTop="0dp"
                 android:id="@+id/collect_delete"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_menu_camera"
+                android:src="@drawable/ic_delete"
                 android:gravity="center"
                 android:layout_gravity="center_vertical" />
 
