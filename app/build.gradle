@@ -39,4 +39,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
     implementation 'com.hyman:flowlayout-lib:1.1.2'
     implementation 'com.github.kanytu:android-parallax-recyclerview:v1.7'
+    implementation 'com.github.medyo:android-about-page:1.2.5'
 }

@@ -104,48 +104,7 @@ public class MainActivity extends AppCompatActivity
                 updateData();
             }
         }).start();
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (!MyApplication.getHaveRun()) {
-//                    //TODO
-//
-//                    //判断网络连接是否正常。同步
-//                    //1.
-//                    if (false) {
-//                        //获取当前日期
-//                        dateForFJ = getDateForFJ();
-//
-//                        //请求数据，更新list
-//                        updateData();
-//                    } else {
-//                        //2.
-//                        //读取已经保存的list
-//                        String peopleListJson =getSharedPreferences("spNewList",MODE_PRIVATE).getString("KEY_getNewList","");  //取出key为"KEY_PEOPLE_DATA"的值，如果值为空，则将第二个参数作为默认值赋值
-//                        if(peopleListJson!="")  //防空判断
-//                        {
-//                            //Gson gson = new Gson();
-//                            //fjLists = gson.fromJson(peopleListJson, new TypeToken<List<FJList>>() {}.getType()); //将json字符串转换成List集合
-//                            List<FJList> temp = GsonUtil.GsonToList(peopleListJson, FJList.class);
-//                            //显示
-//                            fjLists.clear();
-//                            fjLists.addAll(temp);
-//                            runOnUiThread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    objectAdapter.notifyDataSetChanged();
-//                                }
-//                            });
-//                        }
-//
-//                    }
-//                    MyApplication.setHaveRun(true);
-//                }
-//            }
-//        }).start();
-//
-//        View headerView = navigationView.getHeaderView(0);
-//
+
   }
 
     @Override
@@ -174,6 +133,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent=new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
             return true;
         }
 

@@ -78,4 +78,8 @@
     <!-- 收藏-->
     <string name="collectsuccess">collect success</string>
     <string name="deletecollect">delete success</string>
+
+    <!-- 关于-->
+    <string name="about">about this</string>
+    <string name="connect">Connect with us</string>
 </resources>
