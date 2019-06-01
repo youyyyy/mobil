@@ -39,6 +39,7 @@ import okhttp3.Response;
  */
 public class LoginActivity extends AppCompatActivity {
 
+    //注册按钮
     @BindView(R.id.input_phonenum)
     EditText phoneNumdText;
     @BindView(R.id.input_password)
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         new Thread(connect).start();
 
+        //登陆按钮响应事件
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -68,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //注册按钮响应事件
         registButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
