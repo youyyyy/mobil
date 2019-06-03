@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.myapplication.Adapter.SelfCollectAdapter;
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.Collect;
@@ -37,6 +38,8 @@ public class CollectActivity extends AppCompatActivity {
 
     @BindView(R.id.my_collect)
     androidx.constraintlayout.widget.ConstraintLayout myCollect;
+    @BindView(R.id.self_collect_refreash)
+    com.baoyz.widget.PullRefreshLayout collectRefreash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,27 @@ public class CollectActivity extends AppCompatActivity {
         selfCollectAdapter = new SelfCollectAdapter(selfCollect);
         recyclerView.setAdapter(selfCollectAdapter);
 
+        collectRefreash.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        selfCollect.clear();
+                        selfCollect.addAll(initList());
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                selfCollectAdapter.notifyDataSetChanged();
+                                collectRefreash.setRefreshing(false);
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -68,6 +92,8 @@ public class CollectActivity extends AppCompatActivity {
                 });
             }
         }).start();
+
+        MyApplication.networkCheck();
     }
 
     private List<Collect> initList () {

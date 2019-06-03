@@ -26,6 +26,7 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
         ImageView objectImage;
         TextView objectName;
         CardView objectNameCard;
+        ImageView objectJumpImage;
 
         public ViewHolder(View view) {
             super(view);
@@ -33,6 +34,7 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
             objectImage = (ImageView) view.findViewById(R.id.object_image);
             objectName = (TextView) view.findViewById(R.id.object_text);
             objectNameCard = (CardView) view.findViewById(R.id.cardview_item);
+            objectJumpImage=(ImageView) view.findViewById(R.id.object_move);
         }
     }
 
@@ -68,6 +70,28 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.ViewHolder
             }
         });
         holder.objectNameCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                FJList object = mObjectList.get(position);
+                int id = (object.getId());
+                Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+                intent.putExtra("fj_id", id);
+
+                Bitmap bitmap = object.getImage();
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                byte[] bitMapByte = byteArrayOutputStream.toByteArray();
+                intent.putExtra("bitmap", bitMapByte);
+
+                String name=object.getName();
+                intent.putExtra("fj_name",name);
+
+                view.getContext().startActivity(intent);
+            }
+        });
+
+        holder.objectJumpImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();

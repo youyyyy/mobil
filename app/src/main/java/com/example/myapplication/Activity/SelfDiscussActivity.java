@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.myapplication.Adapter.SelfDiscussAdapter;
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.DiscussList;
@@ -37,6 +38,8 @@ public class SelfDiscussActivity extends AppCompatActivity {
 
     @BindView(R.id.my_dis)
     androidx.constraintlayout.widget.ConstraintLayout myDis;
+    @BindView(R.id.self_dis_refreash)
+    com.baoyz.widget.PullRefreshLayout self_dis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,30 @@ public class SelfDiscussActivity extends AppCompatActivity {
             }
         }).start();
 
+        self_dis.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        selfDis.clear();
+                        selfDis.addAll(initList());
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                selfDiscussAdapter.notifyDataSetChanged();
+                                self_dis.setRefreshing(false);
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
+        MyApplication.networkCheck();
+
     }
+
 
     private List<DiscussReturn> initList () {
         List<DiscussReturn> discusses = new ArrayList<>();

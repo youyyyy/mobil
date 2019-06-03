@@ -7,6 +7,10 @@
     android:id="@+id/my_dis"
     tools:context=".Activity.SelfDiscussActivity">
 
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/self_dis_refreash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/self_discuss_recyvleView"
@@ -14,4 +18,5 @@
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 
+</com.baoyz.widget.PullRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

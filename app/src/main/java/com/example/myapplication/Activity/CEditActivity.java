@@ -53,6 +53,8 @@ public class CEditActivity extends AppCompatActivity {
             }
         });
 
+        MyApplication.networkCheck();
+
     }
 
     public void send() {

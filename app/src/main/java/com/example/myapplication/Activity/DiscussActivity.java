@@ -107,6 +107,8 @@ public class DiscussActivity extends AppCompatActivity {
         });
         getMusicData3();
         getUserData2();
+
+        MyApplication.networkCheck();
     }
 
 

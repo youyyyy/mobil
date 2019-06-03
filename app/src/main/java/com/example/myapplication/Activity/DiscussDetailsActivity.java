@@ -83,14 +83,15 @@ public class DiscussDetailsActivity extends AppCompatActivity {
             }
         });
 
+        MyApplication.networkCheck();
     }
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch(msg.what){
                 case 200: {
-                    titleText.setText(fobject.getTitle());
                     disImageView.setImageBitmap(tempPic);
+                    titleText.setText(fobject.getTitle());
                     }
                 }
             }

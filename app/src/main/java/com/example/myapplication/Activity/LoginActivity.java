@@ -78,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        MyApplication.networkCheck();
     }
 
 

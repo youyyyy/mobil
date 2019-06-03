@@ -116,6 +116,8 @@ public class RegistActivity extends AppCompatActivity {
             }
         });
 
+        MyApplication.networkCheck();
+
     }
 
     private String[] initLabel () {

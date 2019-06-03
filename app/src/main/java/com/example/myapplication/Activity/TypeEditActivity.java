@@ -59,6 +59,8 @@ public class TypeEditActivity extends AppCompatActivity {
                 send();
             }
         });
+
+        MyApplication.networkCheck();
     }
 
     private String[] initLabel() {

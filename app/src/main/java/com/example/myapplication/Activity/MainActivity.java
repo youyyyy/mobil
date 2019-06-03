@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,6 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.myapplication.Adapter.ObjectAdapter;
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.FJList;
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity
     private String userType;
 
     androidx.constraintlayout.widget.ConstraintLayout mainCons;
+    com.baoyz.widget.PullRefreshLayout object_refreash;
+    TextView objectTitle;
 
 
     @Override
@@ -69,6 +73,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
        // FloatingActionButton fab = findViewById(R.id.fab);
         mainCons=findViewById(R.id.main_constrain);
+        object_refreash=findViewById(R.id.object_main_refreash);
+        objectTitle=findViewById(R.id.object_all_title);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -97,6 +103,22 @@ public class MainActivity extends AppCompatActivity
         objectAdapter = new ObjectAdapter(fjLists);
         recyclerView.setAdapter(objectAdapter);
 
+        object_refreash.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        dateForFJ=getDateForFJ();
+                        updateData();
+                        objectTitle.setText("今日更新列表");
+                        object_refreash.setRefreshing(false);
+                    }
+                }).start();
+            }
+        });
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -105,6 +127,7 @@ public class MainActivity extends AppCompatActivity
             }
         }).start();
 
+        MyApplication.networkCheck();
   }
 
     @Override
@@ -172,54 +195,63 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "2";
             updateData();
+            objectTitle.setText("周一更新列表");
             mainCons.setBackground(getDrawable(R.drawable.bak_week1));
 
         } else if (id == R.id.nav_Tuesday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "3";
             updateData();
+            objectTitle.setText("周二更新列表");
             mainCons.setBackground(getDrawable(R.drawable.bak_week2));
 
         } else if (id == R.id.nav_Wednesday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "4";
             updateData();
+            objectTitle.setText("周三更新列表");
             mainCons.setBackground(getDrawable(R.drawable.bak_week3));
 
         } else if (id == R.id.nav_Thursday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "5";
             updateData();
+            objectTitle.setText("周四更新列表");
             mainCons.setBackground(getDrawable(R.drawable.bak_week4));
 
         }else if (id == R.id.nav_Friday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "6";
             updateData();
+            objectTitle.setText("周五更新列表");
             mainCons.setBackground(getDrawable(R.drawable.bak_week5));
 
         }else if (id == R.id.nav_Saturday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "7";
             updateData();
+            objectTitle.setText("周六更新列表");
             mainCons.setBackground(getDrawable(R.drawable.bak_week6));
 
         }else if (id == R.id.nav_Sunday) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "1";
             updateData();
+            objectTitle.setText("周日更新列表");
             mainCons.setBackground(getDrawable(R.drawable.bak_week7));
         }
         else if (id == R.id.nav_Finish) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "0";
             updateData();
+            objectTitle.setText("已完结列表");
             mainCons.setBackground(getDrawable(R.drawable.bak_finish));
         }
         else if (id == R.id.nav_All) {
             Toast.makeText(MainActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
             dateForFJ = "8";
             updateData();
+            objectTitle.setText("本季度所有新番");
             mainCons.setBackground(getDrawable(R.drawable.bak_all));
         }
 

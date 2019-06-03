@@ -121,7 +121,7 @@ public class DetailsActivity extends Activity {
             }
         }).start();
 
-
+        MyApplication.networkCheck();
        // initList();
     }
 

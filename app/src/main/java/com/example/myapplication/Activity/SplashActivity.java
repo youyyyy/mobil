@@ -40,13 +40,14 @@ public class SplashActivity extends AppCompatActivity {
         );
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        new Thread(new Runnable() {
+        /*new Thread(new Runnable() {
             @Override
             public void run() {
                 getTest();
             }
         }).start();
-
+*/
+        MyApplication.networkCheck();
         SystemClock.sleep(1500);
         loginCheck();
 
@@ -109,27 +110,7 @@ public class SplashActivity extends AppCompatActivity {
                 });
             }
 
-//        client.newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                Log.d("myapplog", e.toString());
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                body = response.body().toString();
-//
-//                Log.d("myapplog", "body:"+body);
-//
-//               ClientBean web= GsonUtil.GsonToBean(body,ClientBean.class);
-//                Log.d("myapplog", "body:"+web.getX());
-//                if (web.getX() != "1") {
-//                    Message msg = new Message();
-//                    msg.what = 200;
-//                    //msg.arg1 = 111;  可以设置arg1、arg2、obj等参数，传递这些数据
-//                    //msg.arg2 = 222; msg.obj = obj;
-//                    mHandler.sendMessage(msg);
-//                }
+
 
 
             }
@@ -139,4 +120,4 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-//}
+

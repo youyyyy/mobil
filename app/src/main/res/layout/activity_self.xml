@@ -5,218 +5,238 @@
     android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/self_head_pic"
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/self_refreash_own"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_self_pic"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"/>
-
-        <ImageView
-            android:id="@+id/self_sculpture"
-            android:layout_width="100dp"
-            android:layout_height="85dp"
-            android:layout_below="@id/self_head_pic"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/ic_sex_no"
-            />
-        
-        <TextView
-            android:id="@+id/self_id"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="@string/ID"
-            android:layout_below="@id/self_sculpture"
-            android:textIsSelectable="true"
-            android:textSize="10dp"
-            android:layout_marginTop="5dp"
-            />
-
-    <TextView
-        android:id="@+id/self_levels"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/self_sculpture"
-        android:layout_marginTop="5dp"
-        android:text="等级"
-        android:textColor="@color/black"
-        android:textIsSelectable="true"
-        android:layout_toRightOf="@id/self_id"
-        android:textSize="10dp" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/self_cardview1"
-        android:layout_marginTop="20dp"
-        android:layout_width="200dp"
-        android:layout_height="85dp"
-        android:layout_gravity="center_horizontal"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        android:layout_below="@id/self_head_pic"
-        android:layout_toRightOf="@id/self_sculpture">
-    <TextView
-        android:id="@+id/self_csignature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="个性签名"
-        android:textIsSelectable="true"
-        android:textSize="15dp"
-
-        />
-    </com.google.android.material.card.MaterialCardView>
-
-    <ImageView
-        android:id="@+id/self_edit_csignature"
-        android:layout_width="50dp"
-        android:layout_height="85dp"
-        android:layout_below="@id/self_head_pic"
-        android:src="@drawable/ic_edit"
-        android:textIsSelectable="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/self_name_card"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/self_id"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp">
+        android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/self_head_pic"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_self_pic"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"/>
+
+
+
+            <ImageView
+                android:id="@+id/self_sculpture"
+                android:layout_width="100dp"
+                android:layout_height="85dp"
+                android:layout_below="@id/self_head_pic"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_sex_no"
+                />
 
             <TextView
-                android:id="@+id/self_name"
-                android:layout_width="300dp"
+                android:id="@+id/self_id"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="昵称"
                 android:textColor="@color/black"
-                android:textIsSelectable="true" />
+                android:text="@string/ID"
+                android:layout_below="@id/self_sculpture"
+                android:textIsSelectable="true"
+                android:textSize="10dp"
+                android:layout_marginTop="5dp"
+                />
+
+            <TextView
+                android:id="@+id/self_levels"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/self_sculpture"
+                android:layout_marginTop="5dp"
+                android:text="等级"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:layout_toRightOf="@id/self_id"
+                android:textSize="10dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/self_cardview1"
+                android:layout_marginTop="20dp"
+                android:layout_width="200dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center_horizontal"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp"
+                android:layout_below="@id/self_head_pic"
+                android:layout_toRightOf="@id/self_sculpture">
+                <TextView
+                    android:id="@+id/self_csignature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="个性签名"
+                    android:textIsSelectable="true"
+                    android:textSize="15dp"
+
+                    />
+            </com.google.android.material.card.MaterialCardView>
 
             <ImageView
-                android:id="@+id/self_edit_name"
-                android:layout_width="30dp"
+                android:id="@+id/self_edit_csignature"
+                android:layout_width="50dp"
+                android:layout_height="85dp"
+                android:layout_below="@id/self_head_pic"
+                android:src="@drawable/ic_edit"
+                android:textIsSelectable="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/self_name_card"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="77dp"
-                android:src="@drawable/ic_edit"
-                android:textIsSelectable="true" />
-        </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/self_id"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/self_name"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:text="昵称"
+                        android:textColor="@color/black"
+                        android:textIsSelectable="true" />
+
+                    <ImageView
+                        android:id="@+id/self_edit_name"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginBottom="77dp"
+                        android:src="@drawable/ic_edit"
+                        android:textIsSelectable="true" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/self_gender_card"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/self_name_card"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/self_gender"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="性别"
-        android:textIsSelectable="true"
-        />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/self_gender_card"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/self_name_card"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/self_gender"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="性别"
+                        android:textIsSelectable="true"
+                        />
+
+                    <ImageView
+                        android:id="@+id/self_edit_gender"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:src="@drawable/ic_edit"
+                        android:textIsSelectable="true" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/self_type_card"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/self_gender_card"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/self_type"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="喜好"
+                        android:textIsSelectable="true"
+                        />
+
+                    <ImageView
+                        android:id="@+id/self_edit_type"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/ic_edit"
+                        android:textIsSelectable="true" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/self_contact_way"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/self_type_card"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="Ta的联系方式" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/self_phone"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/self_contact_way"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:text="电话" />-->
+
+            <TextView
+                android:id="@+id/self_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/self_contact_way"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:text="邮件"
+                android:textIsSelectable="true"
+                android:textSize="20dp" />
+
+
 
             <ImageView
-                android:id="@+id/self_edit_gender"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:id="@+id/self_cancel"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_logout"
+                android:layout_below="@id/self_email"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:src="@drawable/ic_edit"
-                android:textIsSelectable="true" />
+                android:layout_marginTop="20dp"
+                android:text="注销" />
+
         </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/self_type_card"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/self_gender_card"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/self_type"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="喜好"
-        android:textIsSelectable="true"
-        />
 
-            <ImageView
-                android:id="@+id/self_edit_type"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="0dp"
-                android:src="@drawable/ic_edit"
-                android:textIsSelectable="true" />
-        </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/self_contact_way"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/self_type_card"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:text="Ta的联系方式" />
-
-    <!--<TextView-->
-        <!--android:id="@+id/self_phone"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/self_contact_way"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:text="电话" />-->
-
-    <TextView
-        android:id="@+id/self_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/self_contact_way"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        android:text="邮件" />
-
-    <ImageView
-        android:id="@+id/self_cancel"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_logout"
-        android:layout_below="@id/self_email"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:text="注销" />
+    </com.baoyz.widget.PullRefreshLayout>
 
 
 </RelativeLayout>

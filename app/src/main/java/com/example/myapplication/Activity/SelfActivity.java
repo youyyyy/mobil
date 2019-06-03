@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.User;
 import com.example.myapplication.Bean.UserDiscussBean;
@@ -71,6 +72,8 @@ public class SelfActivity extends AppCompatActivity {
     ImageView cancelImage;
     @BindView(R.id.self_sculpture)
     ImageView sculptureImage;
+    @BindView(R.id.self_refreash_own)
+    com.baoyz.widget.PullRefreshLayout selfRefreash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,9 +143,23 @@ public class SelfActivity extends AppCompatActivity {
             }
         });
 
+        selfRefreash.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        getData();
+                        selfRefreash.setRefreshing(false);
+                    }
+                }).start();
+            }
+        });
+
         getData();
 
-
+        MyApplication.networkCheck();
     }
 
 

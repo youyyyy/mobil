@@ -4,72 +4,76 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        android:layout_marginTop="15dp">
-        <RelativeLayout
+
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    <TextView
-        android:layout_marginTop="0dp"
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center_vertical"
-        android:textStyle="bold"
-        android:text="昵称"/>
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            android:layout_marginTop="15dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_marginTop="0dp"
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:text="昵称"/>
 
-    <TextView
-    android:id="@+id/dicuss_body"
-    android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
-        android:layout_below="@id/username"
-        android:singleLine="false"
-    android:layout_marginLeft="10dp"
-    android:text="body"/>
+                <TextView
+                    android:id="@+id/dicuss_body"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_below="@id/username"
+                    android:singleLine="false"
+                    android:layout_marginLeft="10dp"
+                    android:text="body"/>
 
-    <TextView
-        android:id="@+id/dicuss_time"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:textSize="8dp"
-        android:layout_below="@id/dicuss_body"
-        android:text="时间"/>
+                <TextView
+                    android:id="@+id/dicuss_time"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="8dp"
+                    android:layout_below="@id/dicuss_body"
+                    android:text="时间"/>
 
-    <TextView
-        android:layout_marginTop="12dp"
-        android:id="@+id/floor"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"
-        android:textSize="10dp"
-        android:layout_gravity="center_vertical"
-        android:text="楼" />
+                <TextView
+                    android:layout_marginTop="12dp"
+                    android:id="@+id/floor"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:textSize="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="楼" />
 
-    <TextView
-        android:id="@+id/dicuss_xian"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:textSize="8dp"
-        android:layout_below="@id/dicuss_time"
-        android:text="..."/>
-        </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:id="@+id/dicuss_xian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="8dp"
+                    android:layout_below="@id/dicuss_time"
+                    android:text="..."/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
 
 
 

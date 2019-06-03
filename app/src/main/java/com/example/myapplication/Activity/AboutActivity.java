@@ -27,7 +27,7 @@ public class AboutActivity extends AppCompatActivity {
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
                 .setImage(R.drawable.title)
-                .addItem(new Element().setTitle("Version 1.0"))
+                .addItem(new Element().setTitle("版本 1.0"))
                 .addGroup(getString(R.string.connect))
                 .addGroup("QQ:970600395")
                 .addGroup("微信：18206825944")

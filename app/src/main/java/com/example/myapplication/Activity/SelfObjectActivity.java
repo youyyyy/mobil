@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.myapplication.Adapter.SelfObjectAdapter;
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.FJList;
@@ -52,6 +53,8 @@ public class SelfObjectActivity extends AppCompatActivity {
 
     @BindView(R.id.self_suggest_fj)
     androidx.constraintlayout.widget.ConstraintLayout selfSuggest;
+    @BindView(R.id.self_object_refreash)
+    com.baoyz.widget.PullRefreshLayout self_object_refreash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +72,24 @@ public class SelfObjectActivity extends AppCompatActivity {
         selfObjectAdapter = new SelfObjectAdapter(fjLists);
         recyclerView.setAdapter(selfObjectAdapter);
 
+        self_object_refreash.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        getData();
+                        self_object_refreash.setRefreshing(false);
+                    }
+                }).start();
+            }
+        });
+
 
         getData();
+
+        MyApplication.networkCheck();
     }
 
 

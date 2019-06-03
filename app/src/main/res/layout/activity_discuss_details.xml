@@ -30,6 +30,7 @@
             android:gravity="center"
             android:layout_below="@+id/discuss_detail_title"
             android:layout_marginTop="20dp"
+            android:textIsSelectable="true"
             android:text="名称"/>
           <ImageView
               android:id="@+id/discuss_fjimage"

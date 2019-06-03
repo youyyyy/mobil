@@ -9,6 +9,7 @@ import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +38,8 @@ public class WebActivity extends AppCompatActivity {
 
     private Delivery delivery;
 
+    private ProgressDialog progressDialog;
+
     @BindView(R.id.webView)
     WebView delWebView;
 
@@ -61,7 +64,7 @@ public class WebActivity extends AppCompatActivity {
         delWebView.getSettings().setJavaScriptEnabled(true);
 
 
-
+        MyApplication.networkCheck();
 
         loading();
 
@@ -69,7 +72,7 @@ public class WebActivity extends AppCompatActivity {
     }
 
     private void loading(){
-        final ProgressDialog progressDialog = new ProgressDialog(WebActivity.this,
+        progressDialog = new ProgressDialog(WebActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage(getText(R.string.please));
@@ -93,8 +96,15 @@ public class WebActivity extends AppCompatActivity {
                 case 200: {
                     url=delivery.getUrl();
                     delWebView.loadUrl(url);
+                    Toast.makeText(WebActivity.this, R.string.Developing, Toast.LENGTH_SHORT).show();
                 }
             }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.cancel();
+                }
+            });
         }
     };
 
@@ -127,12 +137,8 @@ public class WebActivity extends AppCompatActivity {
                 mHandler.sendMessage(msg);
             }
         });
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                progressDialog.cancel();
-            }
-        });
+
+
         return delivery;
 
     }

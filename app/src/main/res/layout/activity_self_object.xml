@@ -6,11 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.SelfObjectActivity">
+    <RelativeLayout
+        android:id="@+id/self_object_Rel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/self_object_suggest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:text="个人推荐专区"/>
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/self_object_refreash"
+        android:layout_width="match_parent"
+        android:layout_below="@id/self_object_suggest"
+        android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/self_object_recyvleView"
         android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
         android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    </com.baoyz.widget.PullRefreshLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,7 +81,7 @@ public class GenderEditActivity extends AppCompatActivity {
             }
         });
 
-
+        MyApplication.networkCheck();
 
     }
 

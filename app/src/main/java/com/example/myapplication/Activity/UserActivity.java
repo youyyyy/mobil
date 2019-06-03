@@ -62,6 +62,7 @@ public class UserActivity extends AppCompatActivity {
         userId = intent.getIntExtra("user_userid",0);
         Log.d("myapplog", "用户资料Id: " + userId);
 
+        MyApplication.networkCheck();
 
         getData();
     }

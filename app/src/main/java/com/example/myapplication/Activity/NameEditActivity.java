@@ -51,6 +51,8 @@ public class NameEditActivity extends AppCompatActivity {
                 send();
             }
         });
+
+        MyApplication.networkCheck();
     }
 
     public void send() {
