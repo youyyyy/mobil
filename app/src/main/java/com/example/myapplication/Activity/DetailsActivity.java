@@ -60,6 +60,7 @@ public class DetailsActivity extends Activity {
     private User user;
     private View headView;
     private int uId;
+    private int cookieid;
     private TextView companyText;
     private TextView regionText;
     private TextView actorText;
@@ -104,6 +105,9 @@ public class DetailsActivity extends Activity {
         byte[] bitMapByte = intent.getByteArrayExtra("bitmap");
         bitmap = BitmapFactory.decodeByteArray(bitMapByte, 0, bitMapByte.length);
         //fjName = intent.getStringExtra("fj_name");
+
+        cookieid=Integer.parseInt(getPreference(this,"id"));
+
 
 
         new Thread(new Runnable() {
@@ -163,7 +167,14 @@ public class DetailsActivity extends Activity {
                 Date time=discuss.getTime();
                 SimpleDateFormat format1 = new SimpleDateFormat("yyyy.MM.dd HH时");
                 String tTime= format1.format(time);
+                int pid=discuss.getUserid();
+                if(cookieid==pid){
+                    ((ViewHolder) viewHolder).userNameText.setTextColor(getColor(R.color.details1));
+                    Log.d("myapplog", "变色！");
+                    ((ViewHolder) viewHolder).userNameText.setText(discuss.getUsername()+":");
+                }else {
                 ((ViewHolder) viewHolder).userNameText.setText(discuss.getUsername()+":");
+                }
                 ((ViewHolder) viewHolder).bodyText.setText(discuss.getBody());
                 ((ViewHolder)viewHolder).timeText.setText(tTime);
                 ((ViewHolder)viewHolder).floorText.setText(floor+"楼");
