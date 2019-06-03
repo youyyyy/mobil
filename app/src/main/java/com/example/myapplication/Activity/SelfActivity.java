@@ -69,6 +69,8 @@ public class SelfActivity extends AppCompatActivity {
     CardView typeCard;
     @BindView(R.id.self_cancel)
     ImageView cancelImage;
+    @BindView(R.id.self_sculpture)
+    ImageView sculptureImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +142,10 @@ public class SelfActivity extends AppCompatActivity {
 
         getData();
 
+
     }
+
+
 
 
     private Handler mHandler = new Handler() {
@@ -152,10 +157,13 @@ public class SelfActivity extends AppCompatActivity {
                     levelsText.setText("等级："+user.getLevels());
                     if (user.getGender()==1){
                         genderText.setText("性别："+"男");
+                        sculptureImage.setImageResource(R.drawable.ic_sex_man);
                     } else if (user.getGender()==2){
                         genderText.setText("性别："+"女");
+                        sculptureImage.setImageResource(R.drawable.ic_sex_woman);
                     } else if(user.getGender()==3){
                         genderText.setText("性别："+"保密");
+                        sculptureImage.setImageResource(R.drawable.ic_sex_no);
                     }
                     if(user.getType().equals("null")) {
                         typeText.setText("Ta还没填写哟~");

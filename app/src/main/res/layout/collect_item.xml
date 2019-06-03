@@ -42,7 +42,8 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="10dp"
                 android:layout_below="@id/self_collect_title"
-                android:text="时间"/>
+                android:text="时间"
+                android:textStyle="bold"/>
 
 
             <TextView

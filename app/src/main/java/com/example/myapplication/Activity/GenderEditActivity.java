@@ -93,7 +93,7 @@ public class GenderEditActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(GenderEditActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage(getString(R.string.donghua));
+        progressDialog.setMessage(getString(R.string.please));
         progressDialog.show();
 
         new Thread(new Runnable() {

@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/self_discuss_cardview"
         android:layout_width="match_parent"

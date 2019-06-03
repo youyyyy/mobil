@@ -1,5 +1,6 @@
 package com.example.myapplication.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -62,10 +63,29 @@ public class WebActivity extends AppCompatActivity {
 
 
 
+        loading();
 
-        getData2();
+        //getData2();
     }
 
+    private void loading(){
+        final ProgressDialog progressDialog = new ProgressDialog(WebActivity.this,
+                R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage(getText(R.string.please));
+        progressDialog.show();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    getData2(progressDialog);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -79,7 +99,7 @@ public class WebActivity extends AppCompatActivity {
     };
 
 
-    private Delivery getData2(){
+    private Delivery getData2(ProgressDialog progressDialog){
         Request request = new Request.Builder()
                 .url(MyApplication.getURL() + "delivery/byfobjectid?fobjectid=" + fjId)
                 .build();
@@ -107,7 +127,16 @@ public class WebActivity extends AppCompatActivity {
                 mHandler.sendMessage(msg);
             }
         });
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.cancel();
+            }
+        });
         return delivery;
+
     }
+
+
 
 }

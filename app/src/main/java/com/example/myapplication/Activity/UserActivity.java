@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +49,8 @@ public class UserActivity extends AppCompatActivity {
     TextView csignatureText;
     @BindView(R.id.user_levels)
     TextView levelsText;
+    @BindView(R.id.head_sculpture)
+    ImageView sculptureImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +77,13 @@ public class UserActivity extends AppCompatActivity {
                     levelsText.setText("等级："+user.getLevels());
                     if (user.getGender()==1){
                         genderText.setText("性别："+"男");
+                        sculptureImage.setImageResource(R.drawable.ic_sex_man);
                     } else if (user.getGender()==2){
                         genderText.setText("性别："+"女");
+                        sculptureImage.setImageResource(R.drawable.ic_sex_woman);
                     } else if(user.getGender()==3){
                         genderText.setText("性别："+"保密");
+                        sculptureImage.setImageResource(R.drawable.ic_sex_no);
                     }
                     if(user.getType()=="null") {
                         typeText.setText("Ta还没填写哟~");

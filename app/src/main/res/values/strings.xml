@@ -74,6 +74,7 @@
     <!-- 网络提示-->
     <string name="client">client fails</string>
     <string name="client1">client normal</string>
+    <string name="please">please wait...</string>
 
     <!-- 收藏-->
     <string name="collectsuccess">collect success</string>

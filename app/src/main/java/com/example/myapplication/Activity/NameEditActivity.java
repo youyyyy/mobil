@@ -61,7 +61,7 @@ public class NameEditActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(NameEditActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage(getString(R.string.donghua));
+        progressDialog.setMessage(getString(R.string.please));
         progressDialog.show();
 
         new Thread(new Runnable() {

@@ -16,10 +16,10 @@
         <ImageView
             android:id="@+id/self_sculpture"
             android:layout_width="100dp"
-            android:layout_height="90dp"
+            android:layout_height="85dp"
             android:layout_below="@id/self_head_pic"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_woman"
+            android:src="@drawable/ic_sex_no"
             />
         
         <TextView

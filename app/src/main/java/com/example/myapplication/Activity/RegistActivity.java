@@ -146,7 +146,7 @@ public class RegistActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(RegistActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
+        progressDialog.setMessage(getString(R.string.please));
         progressDialog.show();
 
         new Thread(new Runnable() {

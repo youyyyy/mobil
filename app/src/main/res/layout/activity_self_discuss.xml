@@ -7,6 +7,7 @@
     android:id="@+id/my_dis"
     tools:context=".Activity.SelfDiscussActivity">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/self_discuss_recyvleView"
         android:layout_width="match_parent"

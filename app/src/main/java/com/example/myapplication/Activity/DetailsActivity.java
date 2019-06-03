@@ -414,7 +414,7 @@ public class DetailsActivity extends Activity {
         final ProgressDialog progressDialog = new ProgressDialog(DetailsActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
+        progressDialog.setMessage(getString(R.string.please));
         progressDialog.show();
 
         new Thread(new Runnable() {
