@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        MyApplication.networkCheck();
                         dateForFJ=getDateForFJ();
                         updateData();
                         objectTitle.setText("今日更新列表");

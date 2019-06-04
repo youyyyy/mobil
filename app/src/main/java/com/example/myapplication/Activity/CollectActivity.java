@@ -70,6 +70,7 @@ public class CollectActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                MyApplication.networkCheck();
                                 selfCollectAdapter.notifyDataSetChanged();
                                 collectRefreash.setRefreshing(false);
                             }

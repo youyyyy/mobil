@@ -79,6 +79,7 @@ public class SelfObjectActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        MyApplication.networkCheck();
                         getData();
                         self_object_refreash.setRefreshing(false);
                     }

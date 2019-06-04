@@ -170,7 +170,6 @@ public class DetailsActivity extends Activity {
                 int pid=discuss.getUserid();
                 if(cookieid==pid){
                     ((ViewHolder) viewHolder).userNameText.setTextColor(getColor(R.color.details1));
-                    Log.d("myapplog", "变色！");
                     ((ViewHolder) viewHolder).userNameText.setText(discuss.getUsername()+":");
                 }else {
                 ((ViewHolder) viewHolder).userNameText.setText(discuss.getUsername()+":");

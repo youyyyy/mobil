@@ -150,6 +150,7 @@ public class SelfActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        MyApplication.networkCheck();
                         getData();
                         selfRefreash.setRefreshing(false);
                     }

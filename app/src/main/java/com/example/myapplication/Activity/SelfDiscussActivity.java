@@ -84,6 +84,7 @@ public class SelfDiscussActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                MyApplication.networkCheck();
                                 selfDiscussAdapter.notifyDataSetChanged();
                                 self_dis.setRefreshing(false);
                             }
