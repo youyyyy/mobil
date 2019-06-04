@@ -51,4 +51,5 @@
     <string name="about">这是一个基于Java的季度动漫新番导视系统，能够为您带来当季度的新番情况。本系统始于2019年四月新番这一季度，所以截至目前收录了大部分四月新番内容供您观看，同时将于下一季度的后半月逐步收录下一季度新番进行导视工作。</string>
     <string name="connect">遇到问题请联系我，可通过下方QQ、微信或者邮件任意形式</string>
     <string name="please">请稍候。。。</string>
+    <string name="registError">电话号码或者邮箱已经被人注册过了哟~</string>
 </resources>

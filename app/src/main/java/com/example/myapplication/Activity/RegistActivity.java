@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.User;
+import com.example.myapplication.Bean.normalReturnBean;
 import com.example.myapplication.R;
 import com.example.myapplication.Util.GsonUtil;
 import com.example.myapplication.Util.MD5Util;
@@ -221,6 +222,16 @@ public class RegistActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 String body = response.body().string();
                 Log.d("myapplog", "hahah:" + body);
+                normalReturnBean temp = GsonUtil.GsonToBean(body, normalReturnBean.class);
+                if(temp.getCode()==400){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.cancel();
+                            Toast.makeText(RegistActivity.this, R.string.registError, Toast.LENGTH_SHORT).show();
+                        }
+                    });}
+                    else{
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -229,9 +240,10 @@ public class RegistActivity extends AppCompatActivity {
                     }
                 });
                 startActivity(new Intent(RegistActivity.this, LoginActivity.class));
-                finish();
+                finish();}
             }
         });
+
 
 
 

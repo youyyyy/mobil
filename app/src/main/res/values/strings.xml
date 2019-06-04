@@ -8,6 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="login">login</string>
     <string name="loginError">please inspect your phonenum or password</string>
+    <string name="registError">please inspect your phonenum or email</string>
     <string name="donghua">Creating Account...</string>
 
     <string name="menu_home">Self</string>
