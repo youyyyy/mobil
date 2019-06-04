@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.baoyz.widget.PullRefreshLayout;
 import com.example.myapplication.Application.MyApplication;
 import com.example.myapplication.Bean.Delivery;
 import com.example.myapplication.Bean.DeliveryBean;
@@ -43,8 +42,8 @@ public class WebActivity extends AppCompatActivity {
 
     @BindView(R.id.webView)
     WebView delWebView;
-    @BindView(R.id.web_refreash)
-    com.baoyz.widget.PullRefreshLayout webRefreash;
+//    @BindView(R.id.web_refreash)
+//    com.baoyz.widget.PullRefreshLayout webRefreash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,20 +65,20 @@ public class WebActivity extends AppCompatActivity {
         delWebView.setWebViewClient(new WebViewClient());
         delWebView.getSettings().setJavaScriptEnabled(true);
 
-        webRefreash.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // start refresh
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        MyApplication.networkCheck();
-                        loading();
-                        webRefreash.setRefreshing(false);
-                    }
-                }).start();
-            }
-        });
+//        webRefreash.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                // start refresh
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        MyApplication.networkCheck();
+//                        loading();
+//                        webRefreash.setRefreshing(false);
+//                    }
+//                }).start();
+//            }
+//        });
 
 
         MyApplication.networkCheck();

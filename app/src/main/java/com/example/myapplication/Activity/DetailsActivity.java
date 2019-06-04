@@ -208,7 +208,7 @@ public class DetailsActivity extends Activity {
         adapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
             @Override
             public void onClick(View v, int position) {
-                Toast.makeText(DetailsActivity.this, "You clicked '" + position + "'", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailsActivity.this, "请点击名字哟~", Toast.LENGTH_SHORT).show();
             }
         });
 

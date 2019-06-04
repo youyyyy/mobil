@@ -4,16 +4,16 @@
     android:layout_height="match_parent"
     tools:context=".Activity.WebActivity">
 
-    <com.baoyz.widget.PullRefreshLayout
-        android:id="@+id/web_refreash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<com.baoyz.widget.PullRefreshLayout-->
+        <!--android:id="@+id/web_refreash"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/webView">
     </WebView>
 
-    </com.baoyz.widget.PullRefreshLayout>
+    <!--</com.baoyz.widget.PullRefreshLayout>-->
 
 </RelativeLayout>
